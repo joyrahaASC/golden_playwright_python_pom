@@ -122,5 +122,27 @@
         "Assert order ID matches in history": "assert order_id in history_order_id, f'Expected Order ID {order_id} in history, but got {history_order_id}'"
       }
     }
+  },
+  "C96": {
+    "script_file_path": "tests/web/login/test_invalid_login.py",
+    "correlation_map": {
+      "1. Navigate to the application login page.": {
+        "Load test data from JSON file": "test_data = load_test_data()",
+        "Initialize common scenario object": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Navigate to the login page": "login_page.go_to()"
+      },
+      "2. Enter invalid username and password.": {
+        "Enter invalid credentials into login form": "login_page.valid_login('invalid_user@play.com', 'WrongPassword123')"
+      },
+      "3. Click on the Login button.": {
+        "[Automation Gap] No code mapped to this step": "NO_CODE_FOUND"
+      },
+      "4. Verify that an error message is displayed and the user is not logged in.": {
+        "Locate the error message element": "error_message = page.locator(\"[class*='toast-message']\")",
+        "Wait for error message to be visible": "error_message.wait_for(state='visible')",
+        "Assert error message is visible": "assert error_message.is_visible(), 'Error message should be displayed for invalid login'"
+      }
+    }
   }
 }
