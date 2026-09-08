@@ -1,0 +1,41 @@
+{
+  "shadow_branch_name": "shadow_qama_topology_1788894586",
+  "global_context": {
+    "aava_username": "joy.raha@ascendion.com",
+    "repo_owner": "joyrahaASC",
+    "repo_name": "golden_playwright_python_pom",
+    "working_branch": "test1"
+  },
+  "platforms": {
+    "web": {
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
+      "page_class_path": "pageObjects/web",
+      "locators_path": "locators/web"
+    },
+    "windows": {
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
+      "page_class_path": "",
+      "locators_path": ""
+    },
+    "android": {
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
+      "page_class_path": "",
+      "locators_path": ""
+    },
+    "ios": {
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
+      "page_class_path": "",
+      "locators_path": ""
+    },
+    "mac": {
+      "page_class_metadata_path": "",
+      "locators_metadata_path": "",
+      "page_class_path": "",
+      "locators_path": ""
+    }
+  }
+}
