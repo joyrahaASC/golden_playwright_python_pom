@@ -1,0 +1,166 @@
+{
+  "test_case_id": "TC08",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the application",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Load test data from JSON file",
+          "mapped_function": "load_test_data"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "common_page.py",
+      "class_name": "CommonPage",
+      "situation": "Situation-2",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Scroll to footer",
+          "proposed_signature": "scroll_to_footer()",
+          "detailed_requirements": "Scroll the page to the footer section using JavaScript executor or Selenium scroll actions. Wait for footer element to be visible in viewport.",
+          "implementation_checklist": [
+            "Wait for 'footer_section' to be present in DOM",
+            "Execute JavaScript scroll to bring 'footer_section' into viewport",
+            "Wait for 'footer_section' to be visible"
+          ],
+          "required_locator_keys": [
+            "footer_section"
+          ]
+        },
+        {
+          "intent": "Click Contact Us or Support link",
+          "proposed_signature": "click_contact_support_link()",
+          "detailed_requirements": "Locate the Contact Us or Support link element in the footer section. Wait for the element to be clickable and perform click action.",
+          "implementation_checklist": [
+            "Wait for 'contact_support_link' to be visible",
+            "Wait for 'contact_support_link' to be clickable",
+            "Click 'contact_support_link'"
+          ],
+          "required_locator_keys": [
+            "contact_support_link"
+          ]
+        },
+        {
+          "intent": "Assert Support Portal is visible",
+          "proposed_signature": "verify_support_portal_visible()",
+          "detailed_requirements": "Wait for the Support Portal section or modal to be visible on the page. Assert that the element is displayed and return boolean or raise assertion error.",
+          "implementation_checklist": [
+            "Wait for 'support_portal_section' to be visible",
+            "Assert 'support_portal_section' is displayed"
+          ],
+          "required_locator_keys": [
+            "support_portal_section"
+          ]
+        },
+        {
+          "intent": "Input Subject text",
+          "proposed_signature": "input_subject(subject_text)",
+          "detailed_requirements": "Locate the Subject input field in the support form. Wait for the element to be visible and interactable. Clear any existing text and input the provided subject_text parameter.",
+          "implementation_checklist": [
+            "Wait for 'subject_input_field' to be visible",
+            "Wait for 'subject_input_field' to be interactable",
+            "Clear 'subject_input_field'",
+            "Input subject_text into 'subject_input_field'"
+          ],
+          "required_locator_keys": [
+            "subject_input_field"
+          ]
+        },
+        {
+          "intent": "Input Message text",
+          "proposed_signature": "input_message(message_text)",
+          "detailed_requirements": "Locate the Message textarea or input field in the support form. Wait for the element to be visible and interactable. Clear any existing text and input the provided message_text parameter.",
+          "implementation_checklist": [
+            "Wait for 'message_textarea_field' to be visible",
+            "Wait for 'message_textarea_field' to be interactable",
+            "Clear 'message_textarea_field'",
+            "Input message_text into 'message_textarea_field'"
+          ],
+          "required_locator_keys": [
+            "message_textarea_field"
+          ]
+        },
+        {
+          "intent": "Click Submit button",
+          "proposed_signature": "click_submit_button()",
+          "detailed_requirements": "Locate the Submit button in the support form. Wait for the button to be clickable and perform click action to submit the form.",
+          "implementation_checklist": [
+            "Wait for 'submit_button' to be visible",
+            "Wait for 'submit_button' to be clickable",
+            "Click 'submit_button'"
+          ],
+          "required_locator_keys": [
+            "submit_button"
+          ]
+        },
+        {
+          "intent": "Locate confirmation message element",
+          "proposed_signature": "locate_confirmation_message()",
+          "detailed_requirements": "Locate and return the confirmation message element that appears after form submission. This should return the WebElement object for further operations.",
+          "implementation_checklist": [
+            "Wait for 'confirmation_message_element' to be present in DOM",
+            "Return 'confirmation_message_element' WebElement object"
+          ],
+          "required_locator_keys": [
+            "confirmation_message_element"
+          ]
+        },
+        {
+          "intent": "Wait for confirmation message to be visible",
+          "proposed_signature": "wait_for_confirmation_message_visible(timeout=10)",
+          "detailed_requirements": "Wait for the confirmation message element to be visible on the page after form submission. Use explicit wait with configurable timeout parameter (default 10 seconds). Return True if visible within timeout, otherwise raise TimeoutException.",
+          "implementation_checklist": [
+            "Wait for 'confirmation_message_element' to be visible with timeout parameter",
+            "Return True if 'confirmation_message_element' becomes visible within timeout",
+            "Raise TimeoutException if 'confirmation_message_element' not visible within timeout"
+          ],
+          "required_locator_keys": [
+            "confirmation_message_element"
+          ]
+        },
+        {
+          "intent": "Assert confirmation message is visible",
+          "proposed_signature": "verify_confirmation_message_visible()",
+          "detailed_requirements": "Assert that the confirmation message is displayed on the page after form submission. Verify the element is visible and optionally validate the message text content. Raise assertion error if not visible.",
+          "implementation_checklist": [
+            "Wait for 'confirmation_message_element' to be visible",
+            "Assert 'confirmation_message_element' is displayed",
+            "Get text from 'confirmation_message_element'",
+            "Optionally validate confirmation message text content"
+          ],
+          "required_locator_keys": [
+            "confirmation_message_element"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/common_page.py",
+      "locator_gaps": {
+        "ui_map_file": "common_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "footer_section",
+          "contact_support_link",
+          "support_portal_section",
+          "subject_input_field",
+          "message_textarea_field",
+          "submit_button",
+          "confirmation_message_element"
+        ]
+      }
+    }
+  ]
+}
