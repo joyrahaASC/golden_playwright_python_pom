@@ -28,5 +28,10 @@
     "file_name": "tests/web/scripts/test_suite_01_scripts.py",
     "class_name": "TestSuite01",
     "function_name": "test_product_purchase_flow"
+  },
+  "C101": {
+    "file_name": "tests/web/scripts/test_suite_02_scripts.py",
+    "class_name": "TestSuite02Scripts",
+    "function_name": "test_suite_02_scripts"
   }
 }
