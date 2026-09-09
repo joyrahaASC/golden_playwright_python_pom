@@ -1,0 +1,13 @@
+{
+  "ui_map_file_path": "locators/web/support_page.json",
+  "missing_locators": [
+    "footer_section",
+    "contact_us_link",
+    "support_portal_container",
+    "subject_input_field",
+    "message_textarea",
+    "submit_button",
+    "success_confirmation_message"
+  ],
+  "existing_json_content": ""
+}
