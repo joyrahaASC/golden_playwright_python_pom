@@ -32,5 +32,6 @@
       "mapped_function": "click_checkout",
       "page_object_name": "cartPage"
     }
-  ]
+  ],
+  "previous_feedback": "Missing assertions: The script lacks explicit assertion statements to validate the test. The method 'verify_product_is_displayed()' may contain internal assertions, but the test should include at least one visible assertion using Playwright's expect API (e.g., from playwright.sync_api import expect) to verify application state. Penalty: -30 points."
 }
