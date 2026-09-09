@@ -1,0 +1,35 @@
+{
+  "test_case_id": "TC08",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [
+      {
+        "path": "locators/web/common_page.json",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_updated": [
+      {
+        "path": "pageObjects/web/common_page.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "pages_created": [],
+    "flow_container_updated": [],
+    "test_script_created": [
+      {
+        "path": "tests/web/newScripts/test_suite_08_support.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ],
+    "traceability_updated": [
+      {
+        "path": "traceability_map.json",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
