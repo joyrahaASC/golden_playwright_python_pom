@@ -1,0 +1,119 @@
+{
+  "aava_config": {
+    "aava_username": "joy.raha@ascendion.com",
+    "repo_owner": "joyrahaASC",
+    "repo_name": "golden_playwright_python_pom",
+    "branch": "test2",
+    "intent_path": "pageObjects/web",
+    "platform": "web",
+    "analysis_path": "analysis_1788937478/C101",
+    "test_script_path": "tests/web/scripts/test_suite_02_scripts.py",
+    "requires_flow_container": false,
+    "language": "python",
+    "framework": "playwright",
+    "traceability_map_path": "traceability_map.json"
+  },
+  "test_case_id": "C101",
+  "tiers": {
+    "Tier_1_Locators": [
+      {
+        "ui_map_file": "dashboard_page.json",
+        "page_class_file": "dashboard_page.py",
+        "missing_locators": [
+          "profile_name"
+        ]
+      }
+    ],
+    "Tier_2_Indep_Pages": [
+      {
+        "file": "dashboard_page.py",
+        "class_name": "DashboardPage",
+        "situation": "Situation-2",
+        "resolved_intents": [
+          {
+            "intent": "Search for product and add to cart",
+            "mapped_function": "search_product_add_cart"
+          },
+          {
+            "intent": "Navigate to cart",
+            "mapped_function": "navigate_to_cart"
+          }
+        ],
+        "missing_methods": [
+          {
+            "intent": "Locate profile name element in dashboard header",
+            "proposed_signature": "get_profile_name_element()",
+            "detailed_requirements": "Locate and return the profile name element in the dashboard header. This method should wait for the element to be present in the DOM and return the WebElement representing the profile name display.",
+            "implementation_checklist": [
+              "Wait for 'profile_name' element to be present in DOM using wait_for(state='attached')",
+              "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+              "Return the located element"
+            ],
+            "required_locator_keys": [
+              "profile_name"
+            ]
+          },
+          {
+            "intent": "Wait for profile name to be visible",
+            "proposed_signature": "wait_for_profile_name_visible(timeout=10)",
+            "detailed_requirements": "Wait for the profile name element in the dashboard header to become visible. This method should use an explicit wait with the specified timeout (default 10 seconds) to ensure the profile name is displayed before proceeding. Should return True if visible within timeout, False otherwise.",
+            "implementation_checklist": [
+              "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+              "Wait for 'profile_name' element to be visible using wait_for(state='visible', timeout=timeout*1000)",
+              "Wrap wait in try-except block to catch timeout exceptions",
+              "Return True if element becomes visible within timeout",
+              "Return False if timeout exception occurs"
+            ],
+            "required_locator_keys": [
+              "profile_name"
+            ]
+          },
+          {
+            "intent": "Assert displayed profile name matches expected user name",
+            "proposed_signature": "verify_profile_name(expected_username)",
+            "detailed_requirements": "Retrieve the displayed profile name from the dashboard header and assert that it matches the expected username. This method should get the text from the profile name element and perform an assertion to validate it equals the expected_username parameter. Should raise an assertion error if the names do not match.",
+            "implementation_checklist": [
+              "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+              "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+              "Get text content from 'profile_name' element using text_content() or inner_text()",
+              "Strip whitespace from retrieved text",
+              "Assert that retrieved text equals expected_username parameter",
+              "Raise AssertionError with descriptive message if values do not match"
+            ],
+            "required_locator_keys": [
+              "profile_name"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/dashboard_page.py",
+        "locator_gaps": {
+          "ui_map_file": "dashboard_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "profile_name"
+          ]
+        }
+      }
+    ],
+    "Tier_3_Dep_Pages": [],
+    "Tier_99_Ref": [
+      {
+        "file": "login_page.py",
+        "class_name": "LoginPage",
+        "situation": "Situation-1",
+        "resolved_intents": [
+          {
+            "intent": "Navigate to the login page",
+            "mapped_function": "go_to"
+          },
+          {
+            "intent": "Perform valid login with username and password",
+            "mapped_function": "valid_login"
+          }
+        ],
+        "missing_methods": [],
+        "path": "pageObjects/web/login_page.py"
+      }
+    ]
+  }
+}
