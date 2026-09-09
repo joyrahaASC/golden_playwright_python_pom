@@ -1,5 +1,5 @@
 {
-  "test_case_id": "TC06",
+  "test_case_id": "TC06A",
   "status": "COMPLETED",
   "manifest": {
     "locators_updated": [],
@@ -11,6 +11,12 @@
         "path": "tests/web/newScripts/test_suite_06_checkout.py",
         "score": 100,
         "exit_reason": "SUCCESS"
+      }
+    ],
+    "traceability_updated": [
+      {
+        "path": "traceability_map.json",
+        "status": "SUCCESS"
       }
     ]
   }
