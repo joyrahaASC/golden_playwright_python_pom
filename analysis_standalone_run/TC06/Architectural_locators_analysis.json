@@ -1,0 +1,72 @@
+{
+  "test_case_id": "TC06",
+  "files": [
+    {
+      "file": "cart_page.py",
+      "class_name": "CartPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Assert selected product is displayed in cart",
+          "mapped_function": "verify_product_is_displayed"
+        },
+        {
+          "intent": "Click Checkout button",
+          "mapped_function": "click_checkout"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/cart_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Search product",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Click Add To Cart button for product",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Click cart icon",
+          "mapped_function": "navigate_to_cart"
+        },
+        {
+          "intent": "Navigate to Cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/dashboard_page.py"
+    },
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to e-commerce application URL",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Input username",
+          "mapped_function": "valid_login"
+        },
+        {
+          "intent": "Input password",
+          "mapped_function": "valid_login"
+        },
+        {
+          "intent": "Click Sign In button",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    }
+  ]
+}
