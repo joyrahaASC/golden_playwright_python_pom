@@ -95,3 +95,38 @@ class DashboardPage(CommonPage):
         profile_name_element.wait_for(state="visible")
         actual_name = profile_name_element.inner_text().strip()
         assert actual_name == expected_name, f"Profile name mismatch: expected '{expected_name}', but got '{actual_name}'"
+
+    def get_header_profile_name(self):
+        """Get the profile name text from the dashboard header.
+        
+        This method locates the header profile name element, waits for it to be visible,
+        and retrieves its text content. The method returns the profile name as a string.
+        
+        Returns:
+            str: The profile name text displayed in the dashboard header.
+        """
+        header_profile_name_element = self.page.locator(self.locators["header_profile_name"])
+        header_profile_name_element.wait_for(state="visible")
+        profile_name_text = header_profile_name_element.inner_text()
+        return profile_name_text
+
+    def verify_header_profile_name_visible(self):
+        """Verify that the header profile name element is visible in the dashboard.
+        
+        This method locates the header profile name element, waits for it to become visible,
+        and asserts its visibility using Playwright's expect assertion. Returns True if the
+        element is visible, otherwise raises an AssertionError.
+        
+        Returns:
+            bool: True if the header profile name element is visible.
+        
+        Raises:
+            AssertionError: If the header profile name element is not visible.
+        """
+        header_profile_name_element = self.page.locator(self.locators["header_profile_name"])
+        header_profile_name_element.wait_for(state="visible")
+        expect(header_profile_name_element).to_be_visible()
+        if header_profile_name_element.is_visible():
+            return True
+        else:
+            raise AssertionError("Header profile name element is not visible in dashboard header")
