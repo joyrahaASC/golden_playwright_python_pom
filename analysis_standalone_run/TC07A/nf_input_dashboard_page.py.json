@@ -1,0 +1,53 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Locate profile name element in dashboard header",
+      "proposed_signature": "get_profile_name_element()",
+      "detailed_requirements": "Locate and return the profile name element in the dashboard header. This method should use a locator strategy to find the element containing the user's profile name displayed in the header section of the dashboard.",
+      "implementation_checklist": [
+        "Retrieve locator key 'profile_name' from self.locators dictionary",
+        "Use self.page.locator() with the retrieved locator to find the profile name element",
+        "Return the located element object"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    },
+    {
+      "intent": "Wait for profile name to be visible",
+      "proposed_signature": "wait_for_profile_name_visible(timeout=10)",
+      "detailed_requirements": "Wait for the profile name element in the dashboard header to become visible. This method should implement an explicit wait with a configurable timeout (default 10 seconds) to ensure the profile name element is displayed before proceeding. Should return True if visible within timeout, False otherwise.",
+      "implementation_checklist": [
+        "Retrieve locator key 'profile_name' from self.locators dictionary",
+        "Use self.page.locator() with the retrieved locator to find the profile name element",
+        "Call wait_for() method on the element with state='visible' and timeout parameter (converted to milliseconds: timeout*1000)",
+        "Wrap the wait_for() call in try-except block to catch TimeoutError",
+        "Return True if element becomes visible within timeout",
+        "Return False if TimeoutError is caught"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    },
+    {
+      "intent": "Assert profile name text equals expected value",
+      "proposed_signature": "verify_profile_name(expected_name)",
+      "detailed_requirements": "Verify that the profile name text displayed in the dashboard header matches the expected value. This method should retrieve the text from the profile name element and assert it equals the expected_name parameter. Should raise an assertion error with a descriptive message if the values do not match.",
+      "implementation_checklist": [
+        "Retrieve locator key 'profile_name' from self.locators dictionary",
+        "Use self.page.locator() with the retrieved locator to find the profile name element",
+        "Wait for 'profile_name' element to be visible using wait_for() with state='visible'",
+        "Get text content from the profile name element using text_content() or inner_text() method",
+        "Strip whitespace from retrieved text",
+        "Use expect() from playwright.sync_api to assert the element has expected text, or use Python assert statement",
+        "Assert that retrieved text equals expected_name parameter",
+        "If assertion fails, raise AssertionError with descriptive message including both actual and expected values"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_locators.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n\n    def verify_user_profile_name_visible(self):\n        user_profile_name_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_name_element.wait_for(state=\"visible\")\n        expect(user_profile_name_element).to_be_visible()\n        if user_profile_name_element.is_visible():\n            return True\n        else:\n            raise AssertionError(\"User profile name element is not visible in dashboard header\")\n\n    def assert_user_profile_name_visible(self):\n        user_profile_name_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_name_element.wait_for(state=\"visible\")\n        expect(user_profile_name_element).to_be_visible()\n"
+}
