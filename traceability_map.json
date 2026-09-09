@@ -24,14 +24,9 @@
     "class_name": "",
     "function_name": "test_view_order_details"
   },
-  "TC06": {
-    "file_name": "tests/web/newScripts/test_suite_06_checkout.py",
-    "class_name": "TestSuite06Checkout",
-    "function_name": "test_checkout_flow"
-  },
-  "TC07": {
-    "file_name": "tests/web/newScripts/test_suite_07_profile.py",
-    "class_name": "TestSuite07Profile",
-    "function_name": "test_profile_verification_and_cart_operations"
+  "TC07B": {
+    "file_name": "tests/web/newScripts/test_suite_07B_profile.py",
+    "class_name": "TestSuite07BProfile",
+    "function_name": "test_profile_and_cart_workflow"
   }
 }
