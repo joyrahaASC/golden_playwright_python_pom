@@ -64,9 +64,10 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
-      "cart",
       "orders",
-      "products"
+      "products",
+      "user_profile_name",
+      "cart"
     ],
     "exposed_functions": [
       {
@@ -100,6 +101,22 @@
       {
         "signature": "navigate_to_cart",
         "purpose": "Navigates the user from the dashboard to the shopping cart page to review items and proceed to checkout.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "get_user_profile_name",
+        "purpose": "Retrieves the visible user profile name text from the dashboard header element.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_user_profile_name_visible",
+        "purpose": "Validates that the user profile name element is visible in the dashboard header by waiting for its appearance and asserting its visibility state.",
         "input_parameters": [],
         "output_parameters": [
           "Any"
