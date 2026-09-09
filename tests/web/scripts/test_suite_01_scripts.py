@@ -5,19 +5,19 @@ from pageObjects.web.dashboardPage import DashboardPage
 from pageObjects.web.cartPage import CartPage
 
 
-class TestSuite01Scripts:
-    """Test Suite 01 Scripts"""
+class TestSuite01:
+    """Test Suite 01 - Product Purchase Flow"""
 
     @pytest.fixture(autouse=True)
     def setup(self, page: Page):
-        """Setup fixture for test initialization"""
+        """Setup fixture to initialize page objects"""
         self.loginPage = LoginPage(page)
         self.dashboardPage = DashboardPage(page)
         self.cartPage = CartPage(page)
 
-    def test_suite_01_scripts(self, page: Page):
-        """Test case for suite 01 scripts"""
-        # Navigate to the login page
+    def test_product_purchase_flow(self, page: Page):
+        """Test case for complete product purchase flow"""
+        # Navigate to the application
         self.loginPage.go_to()
         
         # Perform valid login with username and password
@@ -26,10 +26,10 @@ class TestSuite01Scripts:
         # Search for product and add to cart
         self.dashboardPage.search_product_add_cart()
         
-        # Navigate to the cart page
+        # Navigate to cart
         self.dashboardPage.navigate_to_cart()
         
-        # Verify the product is displayed in cart
+        # Verify product is displayed in cart
         self.cartPage.verify_product_is_displayed()
         
         # Click checkout button
