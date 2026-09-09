@@ -23,5 +23,10 @@
     "file_name": "tests/web/cart/test_view_order_details.py",
     "class_name": "",
     "function_name": "test_view_order_details"
+  },
+  "TC06A": {
+    "file_name": "tests/web/newScripts/test_suite_06_checkout.py",
+    "class_name": "TestSuite06Checkout",
+    "function_name": "test_checkout_flow"
   }
 }
