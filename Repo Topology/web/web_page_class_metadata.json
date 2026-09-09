@@ -201,9 +201,11 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
-      "cart",
       "orders",
-      "products"
+      "products",
+      "user_profile_name",
+      "dashboard_header",
+      "cart"
     ],
     "exposed_functions": [
       {
@@ -238,6 +240,16 @@
         "signature": "navigate_to_cart",
         "purpose": "Navigates the user to the shopping cart page.",
         "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_user_profile_name_visible",
+        "purpose": "Waits for the dashboard header to load and validates that the displayed user profile name is visible and matches the expected name provided.",
+        "input_parameters": [
+          "expected_name"
+        ],
         "output_parameters": [
           "Any"
         ]
