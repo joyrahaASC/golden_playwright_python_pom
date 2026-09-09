@@ -1,5 +1,5 @@
 {
-  "test_case_id": "TC06",
+  "test_case_id": "TC06A",
   "files": [
     {
       "file": "login_page.py",
@@ -7,19 +7,11 @@
       "situation": "Situation-1",
       "resolved_intents": [
         {
-          "intent": "Navigate to e-commerce application URL",
+          "intent": "Navigate to the application",
           "mapped_function": "go_to"
         },
         {
-          "intent": "Input username",
-          "mapped_function": "valid_login"
-        },
-        {
-          "intent": "Input password",
-          "mapped_function": "valid_login"
-        },
-        {
-          "intent": "Click Sign In button",
+          "intent": "Login with valid credentials",
           "mapped_function": "valid_login"
         }
       ],
@@ -31,19 +23,11 @@
       "situation": "Situation-1",
       "resolved_intents": [
         {
-          "intent": "Search product",
+          "intent": "Search for product and add to cart",
           "mapped_function": "search_product_add_cart"
         },
         {
-          "intent": "Click Add To Cart button for product",
-          "mapped_function": "search_product_add_cart"
-        },
-        {
-          "intent": "Click cart icon",
-          "mapped_function": "navigate_to_cart"
-        },
-        {
-          "intent": "Navigate to Cart page",
+          "intent": "Navigate to the cart page",
           "mapped_function": "navigate_to_cart"
         }
       ],
@@ -55,11 +39,11 @@
       "situation": "Situation-1",
       "resolved_intents": [
         {
-          "intent": "Assert selected product is displayed in cart",
+          "intent": "Verify the product is displayed in cart",
           "mapped_function": "verify_product_is_displayed"
         },
         {
-          "intent": "Click Checkout button",
+          "intent": "Click checkout button",
           "mapped_function": "click_checkout"
         }
       ],
