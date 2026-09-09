@@ -1,0 +1,70 @@
+{
+  "test_script_path": "tests/web/scripts/test_suite_03_scripts.py",
+  "top_5_reference_file": "analysis_1788986761/C102/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Navigate to the login page",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Perform valid login with username and password",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Scroll to footer",
+      "label": "",
+      "mapped_function": "scroll_to_footer",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Click Contact Us or Support link",
+      "label": "",
+      "mapped_function": "click_contact_us_link",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Assert support portal is visible",
+      "label": "",
+      "mapped_function": "assert_support_portal_visible",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Input subject text",
+      "label": "",
+      "mapped_function": "input_subject",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Input message text",
+      "label": "",
+      "mapped_function": "input_message",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Click Submit button",
+      "label": "",
+      "mapped_function": "click_submit_button",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Locate success confirmation message element",
+      "label": "",
+      "mapped_function": "locate_success_message",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Wait for success confirmation message to be visible",
+      "label": "",
+      "mapped_function": "wait_for_success_message",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Assert success confirmation message is visible",
+      "label": "",
+      "mapped_function": "assert_success_message_visible",
+      "page_object_name": "support"
+    }
+  ]
+}
