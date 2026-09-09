@@ -1,0 +1,56 @@
+{
+  "test_script_path": "tests/web/newScripts/test_suite_06_checkout.py",
+  "top_5_reference_file": "analysis_standalone_run/TC06/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Assert selected product is displayed in cart",
+      "mapped_function": "verify_product_is_displayed",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Click Checkout button",
+      "mapped_function": "click_checkout",
+      "page_object_name": "cartPage"
+    },
+    {
+      "intent": "Search product",
+      "mapped_function": "search_product_add_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Click Add To Cart button for product",
+      "mapped_function": "search_product_add_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Click cart icon",
+      "mapped_function": "navigate_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to Cart page",
+      "mapped_function": "navigate_to_cart",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to e-commerce application URL",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Input username",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Input password",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Click Sign In button",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    }
+  ]
+}
