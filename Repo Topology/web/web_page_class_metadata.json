@@ -360,5 +360,116 @@
         ]
       }
     ]
+  },
+  {
+    "file_path": "pageObjects/web/support_page.py",
+    "component": "support_page",
+    "dependencies": [],
+    "locator_keys": [
+      "support_portal_container",
+      "contact_us_link",
+      "success_confirmation_message",
+      "submit_button",
+      "message_textarea",
+      "footer_section",
+      "subject_input_field",
+      "footer_section",
+      "contact_us_link",
+      "support_portal_container",
+      "submit_button",
+      "subject_input_field",
+      "success_confirmation_message",
+      "success_confirmation_message",
+      "message_textarea",
+      "success_confirmation_message"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "scroll_to_footer",
+        "purpose": "Scrolls the page to the footer section to make footer elements visible and interactable.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "load_locator",
+        "purpose": "Loads and parses a JSON locator file from the web locators directory, returning the locator configuration as a dictionary.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_contact_us_link",
+        "purpose": "Navigates to the support portal by clicking the Contact Us or Support link in the footer section.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_support_portal_visible",
+        "purpose": "Validates that the support portal container element is visible on the page, waiting for it to appear and asserting its visibility state to confirm successful navigation.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_submit_button",
+        "purpose": "Clicks the Submit button to submit the support request form after ensuring it is visible and clickable.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_subject",
+        "purpose": "Inputs text into the subject field of the support form, clearing any existing content first.",
+        "input_parameters": [
+          "subject_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "wait_for_success_message",
+        "purpose": "Waits for the success confirmation message element to become visible on the page after an action is performed, with a 10-second timeout.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "locate_success_message",
+        "purpose": "Locates and waits for the success confirmation message element to be attached to the DOM after a form submission, then returns the element for further interaction or validation.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_message",
+        "purpose": "Inputs text into the message textarea field of the support form, clearing any existing content first.",
+        "input_parameters": [
+          "message_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_success_message_visible",
+        "purpose": "Verifies that the success confirmation message appears on the page after a form has been successfully submitted.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
   }
 ]
