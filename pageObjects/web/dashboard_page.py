@@ -30,3 +30,39 @@ class DashboardPage(CommonPage):
         self.page.locator(self.locators["cart"]).click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_load_state("domcontentloaded")
+
+    def verify_user_profile_name_visible(self, expected_name):
+        """Verify that the user profile name is visible and matches the expected name.
+        
+        Args:
+            expected_name (str): The expected user profile name to verify.
+            
+        Returns:
+            bool: True if the profile name is visible and matches the expected name.
+            
+        Raises:
+            AssertionError: If the profile name is not visible or does not match the expected name.
+        """
+        user_profile_name_element = self.page.locator(self.locators["user_profile_name"])
+        user_profile_name_element.wait_for(state="visible")
+        expect(user_profile_name_element).to_be_visible()
+        actual_name = user_profile_name_element.inner_text()
+        if actual_name != expected_name:
+            raise AssertionError(f"User profile name mismatch. Expected: '{expected_name}', Actual: '{actual_name}'")
+        return True
+
+    def assert_user_profile_name_displayed(self, expected_name):
+        """Assert that the user profile name is displayed and matches the expected name.
+        
+        Args:
+            expected_name (str): The expected user profile name to verify.
+            
+        Raises:
+            AssertionError: If the profile name is not displayed or does not match the expected name.
+        """
+        user_profile_name_element = self.page.locator(self.locators["user_profile_name"])
+        user_profile_name_element.wait_for(state="visible")
+        is_visible = user_profile_name_element.is_visible()
+        assert is_visible, "User profile name element is not visible on the dashboard"
+        actual_name = user_profile_name_element.inner_text()
+        assert actual_name == expected_name, f"User profile name mismatch. Expected: '{expected_name}', Actual: '{actual_name}'"
