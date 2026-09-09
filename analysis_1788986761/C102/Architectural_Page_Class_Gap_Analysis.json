@@ -1,0 +1,74 @@
+{
+  "test_case_id": "C102",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": []
+    },
+    {
+      "file": "support_page.py",
+      "class_name": "Support",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Scroll to footer",
+          "proposed_signature": "scroll_to_footer()",
+          "detailed_requirements": "Scroll the page to the footer section to make footer elements visible and interactable."
+        },
+        {
+          "intent": "Click Contact Us or Support link",
+          "proposed_signature": "click_contact_us_link()",
+          "detailed_requirements": "Wait for the Contact Us or Support link element to be clickable in the footer section and click it to navigate to the support portal."
+        },
+        {
+          "intent": "Assert support portal is visible",
+          "proposed_signature": "assert_support_portal_visible()",
+          "detailed_requirements": "Wait for the support portal container or form to be visible on the page and assert its visibility state to confirm successful navigation."
+        },
+        {
+          "intent": "Input subject text",
+          "proposed_signature": "input_subject(subject_text)",
+          "detailed_requirements": "Wait for the subject input field to be visible and interactable, clear any existing text, and input the provided subject text."
+        },
+        {
+          "intent": "Input message text",
+          "proposed_signature": "input_message(message_text)",
+          "detailed_requirements": "Wait for the message textarea or input field to be visible and interactable, clear any existing text, and input the provided message text."
+        },
+        {
+          "intent": "Click Submit button",
+          "proposed_signature": "click_submit_button()",
+          "detailed_requirements": "Wait for the Submit button to be clickable and click it to submit the support request form."
+        },
+        {
+          "intent": "Locate success confirmation message element",
+          "proposed_signature": "locate_success_message()",
+          "detailed_requirements": "Locate and return the success confirmation message element on the page after form submission."
+        },
+        {
+          "intent": "Wait for success confirmation message to be visible",
+          "proposed_signature": "wait_for_success_message()",
+          "detailed_requirements": "Wait for the success confirmation message element to become visible on the page with an appropriate timeout."
+        },
+        {
+          "intent": "Assert success confirmation message is visible",
+          "proposed_signature": "assert_success_message_visible()",
+          "detailed_requirements": "Assert that the success confirmation message element is visible on the page to verify successful form submission."
+        }
+      ]
+    }
+  ]
+}
