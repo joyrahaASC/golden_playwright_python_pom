@@ -1,0 +1,17 @@
+{
+  "test_case_id": "TC06",
+  "status": "COMPLETED",
+  "manifest": {
+    "locators_updated": [],
+    "pages_updated": [],
+    "pages_created": [],
+    "flow_container_updated": [],
+    "test_script_created": [
+      {
+        "path": "tests/web/newScripts/test_suite_06_checkout.py",
+        "score": 100,
+        "exit_reason": "SUCCESS"
+      }
+    ]
+  }
+}
