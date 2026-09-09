@@ -23,10 +23,5 @@
     "file_name": "tests/web/cart/test_view_order_details.py",
     "class_name": "",
     "function_name": "test_view_order_details"
-  },
-  "TC08": {
-    "file_name": "tests/web/newScripts/test_suite_08_support.py",
-    "class_name": "TestSuite08Support",
-    "function_name": "test_support_portal_submission"
   }
 }
