@@ -30,3 +30,17 @@ class DashboardPage(CommonPage):
         self.page.locator(self.locators["cart"]).click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_load_state("domcontentloaded")
+
+    def verify_user_profile_name_visible(self):
+        user_profile_name_element = self.page.locator(self.locators["user_profile_name"])
+        user_profile_name_element.wait_for(state="visible")
+        expect(user_profile_name_element).to_be_visible()
+        if user_profile_name_element.is_visible():
+            return True
+        else:
+            raise AssertionError("User profile name element is not visible in dashboard header")
+
+    def assert_user_profile_name_visible(self):
+        user_profile_name_element = self.page.locator(self.locators["user_profile_name"])
+        user_profile_name_element.wait_for(state="visible")
+        expect(user_profile_name_element).to_be_visible()
