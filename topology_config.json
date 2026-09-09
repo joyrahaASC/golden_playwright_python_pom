@@ -12,7 +12,8 @@
       "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
       "page_class_path": "pageObjects/web",
       "locators_path": "locators/web",
-      "test_cases_steps_scripts_map_path": ""
+      "test_cases_steps_scripts_map_path": "Repo Topology/web/web_test_cases_steps_scripts_map.json",
+      "script_path": "tests/web"
     },
     "windows": {
       "page_class_metadata_path": "",
