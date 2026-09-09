@@ -3,5 +3,5 @@
   "feedback": "Perfect.",
   "plateau_flag": false,
   "target_file_path": "tests/web/newScripts/test_suite_06_checkout.py",
-  "class_name": "TestCheckout"
+  "class_name": "TestSuite06Checkout"
 }
