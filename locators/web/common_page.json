@@ -1,0 +1,37 @@
+{
+  "footer_section": {
+    "locator": {
+      "id": "TBD_footer_section"
+    }
+  },
+  "contact_support_link": {
+    "locator": {
+      "id": "TBD_contact_support_link"
+    }
+  },
+  "support_portal_section": {
+    "locator": {
+      "id": "TBD_support_portal_section"
+    }
+  },
+  "subject_input_field": {
+    "locator": {
+      "id": "TBD_subject_input_field"
+    }
+  },
+  "message_textarea_field": {
+    "locator": {
+      "id": "TBD_message_textarea_field"
+    }
+  },
+  "submit_button": {
+    "locator": {
+      "id": "TBD_submit_button"
+    }
+  },
+  "confirmation_message_element": {
+    "locator": {
+      "id": "TBD_confirmation_message_element"
+    }
+  }
+}
