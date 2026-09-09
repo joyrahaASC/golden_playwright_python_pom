@@ -28,5 +28,6 @@
       "mapped_function": "navigate_to_cart",
       "page_object_name": "dashboardPage"
     }
-  ]
+  ],
+  "previous_feedback": "Missing assertions to verify application state. The script executes steps but lacks any assertion statements to validate the test (-30 Points)."
 }
