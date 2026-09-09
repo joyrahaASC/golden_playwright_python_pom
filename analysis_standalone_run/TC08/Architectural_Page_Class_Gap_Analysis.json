@@ -1,0 +1,78 @@
+{
+  "test_case_id": "TC08",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the application",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Load test data from JSON file",
+          "mapped_function": "load_test_data"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": []
+    },
+    {
+      "file": "common_page.py",
+      "class_name": "CommonPage",
+      "situation": "Situation-2",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Scroll to footer",
+          "proposed_signature": "scroll_to_footer()",
+          "detailed_requirements": "Scroll the page to the footer section using JavaScript executor or Selenium scroll actions. Wait for footer element to be visible in viewport."
+        },
+        {
+          "intent": "Click Contact Us or Support link",
+          "proposed_signature": "click_contact_support_link()",
+          "detailed_requirements": "Locate the Contact Us or Support link element in the footer section. Wait for the element to be clickable and perform click action."
+        },
+        {
+          "intent": "Assert Support Portal is visible",
+          "proposed_signature": "verify_support_portal_visible()",
+          "detailed_requirements": "Wait for the Support Portal section or modal to be visible on the page. Assert that the element is displayed and return boolean or raise assertion error."
+        },
+        {
+          "intent": "Input Subject text",
+          "proposed_signature": "input_subject(subject_text)",
+          "detailed_requirements": "Locate the Subject input field in the support form. Wait for the element to be visible and interactable. Clear any existing text and input the provided subject_text parameter."
+        },
+        {
+          "intent": "Input Message text",
+          "proposed_signature": "input_message(message_text)",
+          "detailed_requirements": "Locate the Message textarea or input field in the support form. Wait for the element to be visible and interactable. Clear any existing text and input the provided message_text parameter."
+        },
+        {
+          "intent": "Click Submit button",
+          "proposed_signature": "click_submit_button()",
+          "detailed_requirements": "Locate the Submit button in the support form. Wait for the button to be clickable and perform click action to submit the form."
+        },
+        {
+          "intent": "Locate confirmation message element",
+          "proposed_signature": "locate_confirmation_message()",
+          "detailed_requirements": "Locate and return the confirmation message element that appears after form submission. This should return the WebElement object for further operations."
+        },
+        {
+          "intent": "Wait for confirmation message to be visible",
+          "proposed_signature": "wait_for_confirmation_message_visible(timeout=10)",
+          "detailed_requirements": "Wait for the confirmation message element to be visible on the page after form submission. Use explicit wait with configurable timeout parameter (default 10 seconds). Return True if visible within timeout, otherwise raise TimeoutException."
+        },
+        {
+          "intent": "Assert confirmation message is visible",
+          "proposed_signature": "verify_confirmation_message_visible()",
+          "detailed_requirements": "Assert that the confirmation message is displayed on the page after form submission. Verify the element is visible and optionally validate the message text content. Raise assertion error if not visible."
+        }
+      ]
+    }
+  ]
+}
