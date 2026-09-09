@@ -3,5 +3,5 @@
     "productsText": ".card-body b",
     "cart": "[routerlink*='cart']",
     "orders": "button[routerlink*='myorders']",
-    "header_profile_name": "TBD_header_profile_name"
+    "profile_name": "TBD_profile_name"
 }
