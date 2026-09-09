@@ -1,0 +1,50 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Locate profile name element in dashboard header",
+      "proposed_signature": "get_profile_name_element()",
+      "detailed_requirements": "Locate and return the profile name element in the dashboard header. This method should wait for the element to be present in the DOM and return the WebElement representing the profile name display.",
+      "implementation_checklist": [
+        "Wait for 'profile_name' element to be present in DOM using wait_for(state='attached')",
+        "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+        "Return the located element"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    },
+    {
+      "intent": "Wait for profile name to be visible",
+      "proposed_signature": "wait_for_profile_name_visible(timeout=10)",
+      "detailed_requirements": "Wait for the profile name element in the dashboard header to become visible. This method should use an explicit wait with the specified timeout (default 10 seconds) to ensure the profile name is displayed before proceeding. Should return True if visible within timeout, False otherwise.",
+      "implementation_checklist": [
+        "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+        "Wait for 'profile_name' element to be visible using wait_for(state='visible', timeout=timeout*1000)",
+        "Wrap wait in try-except block to catch timeout exceptions",
+        "Return True if element becomes visible within timeout",
+        "Return False if timeout exception occurs"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    },
+    {
+      "intent": "Assert displayed profile name matches expected user name",
+      "proposed_signature": "verify_profile_name(expected_username)",
+      "detailed_requirements": "Retrieve the displayed profile name from the dashboard header and assert that it matches the expected username. This method should get the text from the profile name element and perform an assertion to validate it equals the expected_username parameter. Should raise an assertion error if the names do not match.",
+      "implementation_checklist": [
+        "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+        "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+        "Get text content from 'profile_name' element using text_content() or inner_text()",
+        "Strip whitespace from retrieved text",
+        "Assert that retrieved text equals expected_username parameter",
+        "Raise AssertionError with descriptive message if values do not match"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_locators.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n\n    def verify_user_profile_name_visible(self):\n        user_profile_name_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_name_element.wait_for(state=\"visible\")\n        expect(user_profile_name_element).to_be_visible()\n        if user_profile_name_element.is_visible():\n            return True\n        else:\n            raise AssertionError(\"User profile name element is not visible in dashboard header\")\n\n    def assert_user_profile_name_visible(self):\n        user_profile_name_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_name_element.wait_for(state=\"visible\")\n        expect(user_profile_name_element).to_be_visible()\n\n    def get_profile_name_element(self):\n        \"\"\"Locate and return the profile name element in the dashboard header.\n        \n        This method retrieves the profile name element using the 'profile_name' locator key\n        from the locators dictionary and returns the element object for further interactions.\n        \n        Returns:\n            Locator: The profile name element locator object.\n        \"\"\"\n        profile_name_locator = self.locators[\"profile_name\"]\n        return self.page.locator(profile_name_locator)\n\n    def wait_for_profile_name_visible(self, timeout=10):\n        \"\"\"Wait for the profile name element to become visible with a configurable timeout.\n        \n        This method implements an explicit wait for the profile name element to be displayed\n        in the dashboard header. It uses Playwright's wait_for() method with a visible state.\n        \n        Args:\n            timeout (int): Maximum time to wait in seconds (default: 10).\n        \n        Returns:\n            bool: True if the element becomes visible within the timeout, False otherwise.\n        \"\"\"\n        try:\n            profile_name_locator = self.locators[\"profile_name\"]\n            profile_name_element = self.page.locator(profile_name_locator)\n            profile_name_element.wait_for(state=\"visible\", timeout=timeout*1000)\n            return True\n        except TimeoutError:\n            return False\n\n    def verify_profile_name(self, expected_name):\n        \"\"\"Verify that the profile name text matches the expected value.\n        \n        This method retrieves the text content from the profile name element and asserts\n        that it equals the expected name parameter. Raises an AssertionError with a\n        descriptive message if the values do not match.\n        \n        Args:\n            expected_name (str): The expected profile name text to verify against.\n        \n        Raises:\n            AssertionError: If the actual profile name does not match the expected name.\n        \"\"\"\n        profile_name_locator = self.locators[\"profile_name\"]\n        profile_name_element = self.page.locator(profile_name_locator)\n        profile_name_element.wait_for(state=\"visible\")\n        actual_name = profile_name_element.inner_text().strip()\n        assert actual_name == expected_name, f\"Profile name mismatch: expected '{expected_name}', but got '{actual_name}'\"\n\n    def get_header_profile_name(self):\n        \"\"\"Get the profile name text from the dashboard header.\n        \n        This method locates the header profile name element, waits for it to be visible,\n        and retrieves its text content. The method returns the profile name as a string.\n        \n        Returns:\n            str: The profile name text displayed in the dashboard header.\n        \"\"\"\n        header_profile_name_element = self.page.locator(self.locators[\"header_profile_name\"])\n        header_profile_name_element.wait_for(state=\"visible\")\n        profile_name_text = header_profile_name_element.inner_text()\n        return profile_name_text\n\n    def verify_header_profile_name_visible(self):\n        \"\"\"Verify that the header profile name element is visible in the dashboard.\n        \n        This method locates the header profile name element, waits for it to become visible,\n        and asserts its visibility using Playwright's expect assertion. Returns True if the\n        element is visible, otherwise raises an AssertionError.\n        \n        Returns:\n            bool: True if the header profile name element is visible.\n        \n        Raises:\n            AssertionError: If the header profile name element is not visible.\n        \"\"\"\n        header_profile_name_element = self.page.locator(self.locators[\"header_profile_name\"])\n        header_profile_name_element.wait_for(state=\"visible\")\n        expect(header_profile_name_element).to_be_visible()\n        if header_profile_name_element.is_visible():\n            return True\n        else:\n            raise AssertionError(\"Header profile name element is not visible in dashboard header\")\n"
+}
