@@ -1,0 +1,7 @@
+{
+  "ui_map_file_path": "pageObjects/web/dashboard_locators.json",
+  "missing_locators": [
+    "profile_name"
+  ],
+  "existing_json_content": ""
+}
