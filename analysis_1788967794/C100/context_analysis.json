@@ -1,0 +1,56 @@
+{
+  "test_case_id": "C100",
+  "files": [
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/dashboard_page.py"
+    },
+    {
+      "file": "cart_page.py",
+      "class_name": "CartPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Verify product is displayed in cart",
+          "mapped_function": "verify_product_is_displayed"
+        },
+        {
+          "intent": "Click checkout button",
+          "mapped_function": "click_checkout"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/cart_page.py"
+    },
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the application",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Login with valid credentials",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    }
+  ]
+}
