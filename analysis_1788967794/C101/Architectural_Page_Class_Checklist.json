@@ -1,0 +1,74 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Assert user profile name is visible in dashboard header",
+          "proposed_signature": "verify_user_profile_name_visible(expected_name)",
+          "detailed_requirements": "Wait for the user profile name element in the dashboard header to be visible. Verify that the displayed profile name matches the expected_name parameter. Return True if visible and matches, otherwise raise an assertion error with a descriptive message.",
+          "implementation_checklist": [
+            "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+            "Wait for 'user_profile_name' to be visible using .wait_for(state='visible')",
+            "Use expect() to verify 'user_profile_name' is visible with expect(user_profile_name_element).to_be_visible()",
+            "Get text content from 'user_profile_name' element using .text_content() or .inner_text()",
+            "Assert retrieved text matches expected_name parameter",
+            "If assertion passes, return True",
+            "If assertion fails, raise AssertionError with descriptive message including expected vs actual values"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        },
+        {
+          "intent": "Assert user profile name is displayed",
+          "proposed_signature": "assert_user_profile_name_displayed(expected_name)",
+          "detailed_requirements": "Locate the user profile name element in the dashboard header. Assert that the element is displayed on the page and that its text content matches the expected_name parameter. This method should use explicit waits to ensure the element is present before performing the assertion.",
+          "implementation_checklist": [
+            "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+            "Wait for 'user_profile_name' to be visible using .wait_for(state='visible')",
+            "Check if 'user_profile_name' is visible using .is_visible()",
+            "Assert that .is_visible() returns True",
+            "Get text content from 'user_profile_name' element using .text_content() or .inner_text()",
+            "Assert retrieved text matches expected_name parameter",
+            "If any assertion fails, raise AssertionError with descriptive message"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py"
+    }
+  ]
+}
