@@ -30,9 +30,9 @@
     "function_name": "test_case_c100"
   },
   "C101": {
-    "file_name": "tests/web/scripts/test_suite_02_scripts.py",
-    "class_name": "TestSuite02",
-    "function_name": "test_user_login_and_product_search"
+    "file_name": "tests/web/scripts/test_suite_01_scripts.py",
+    "class_name": "",
+    "function_name": "test_suite_01_scripts"
   },
   "C102": {
     "file_name": "tests/web/scripts/test_suite_01_scripts.py",
