@@ -64,10 +64,11 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
-      "orders",
-      "products",
       "user_profile_name",
-      "cart"
+      "orders",
+      "success_message",
+      "cart",
+      "products"
     ],
     "exposed_functions": [
       {
@@ -117,6 +118,22 @@
       {
         "signature": "assert_user_profile_name_visible",
         "purpose": "Validates that the user profile name element is visible in the dashboard header by waiting for its appearance and asserting its visibility state.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_success_message_visible",
+        "purpose": "Validates that the success confirmation message element is visible on the page after an action is completed.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "wait_for_success_message",
+        "purpose": "Waits for the success or confirmation message element to become visible on the page using an explicit wait with appropriate timeout.",
         "input_parameters": [],
         "output_parameters": [
           "Any"
@@ -354,6 +371,131 @@
       {
         "signature": "submit_and_get_order_id",
         "purpose": "Submits the order, verifies the confirmation message, extracts the order ID, and stores it for later use.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/support_portal_page.py",
+    "component": "support_portal_page",
+    "dependencies": [],
+    "locator_keys": [
+      "submit_button",
+      "success_confirmation_message",
+      "message_textarea",
+      "support_portal_page_header",
+      "subject_input_field",
+      "loading_indicator",
+      "message_textarea",
+      "subject_input_field",
+      "success_confirmation_message",
+      "support_portal_page_header",
+      "submit_button",
+      "loading_indicator",
+      "success_confirmation_message"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Loads and returns a dictionary of locator mappings from a specified JSON file in the locators/web directory.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_message",
+        "purpose": "Clears any existing text in the message textarea, enters the provided message text, and verifies the text was entered successfully.",
+        "input_parameters": [
+          "message_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_subject",
+        "purpose": "Inputs subject text into the subject input field, clearing any existing content and verifying successful entry.",
+        "input_parameters": [
+          "subject_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "locate_success_confirmation_message",
+        "purpose": "Locates and returns the success confirmation message element after waiting for it to become visible, enabling validation of successful form submission.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "navigate_to_support_portal",
+        "purpose": "Navigates to the Support Portal page and waits for the page to fully load, verifying the support portal header is visible to confirm successful navigation.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_submit_button",
+        "purpose": "Clicks the Submit button to send the support request, waits for the button to be visible and enabled, and handles any loading indicators that appear during submission.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_confirmation_text",
+        "purpose": "Validates that the displayed confirmation message contains the expected text, waiting for the message to be visible before performing the assertion.",
+        "input_parameters": [
+          "expected_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/footer_navigation.py",
+    "component": "footer_navigation",
+    "dependencies": [],
+    "locator_keys": [
+      "footer_section",
+      "contact_us_link",
+      "contact_us_link",
+      "footer_section"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Loads and returns a dictionary of UI element locators from a specified JSON file in the locators/web directory.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_contact_us_link",
+        "purpose": "Locates and clicks the Contact Us link in the footer, waits for the element to be visible, performs the click action, and ensures the navigation completes successfully.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "scroll_to_footer",
+        "purpose": "Scrolls the page down to bring the footer section into view, waits for the footer to be attached to the DOM and visible, then verifies its display.",
         "input_parameters": [],
         "output_parameters": [
           "Any"
