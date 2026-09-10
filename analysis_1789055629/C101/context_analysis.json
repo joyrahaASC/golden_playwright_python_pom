@@ -1,0 +1,76 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart",
+          "mapped_function": "navigate_to_cart"
+        },
+        {
+          "intent": "Wait for profile name to be visible in dashboard header",
+          "mapped_function": "assert_user_profile_name_visible"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Locate profile name element in dashboard header",
+          "proposed_signature": "locate_profile_name_element()",
+          "detailed_requirements": "Locate and return the WebElement for the profile name in the dashboard header. This method should use the appropriate locator strategy to find the profile name element and return the element object for further operations like visibility checks or text extraction.",
+          "implementation_checklist": [
+            "Locate element using self.page.locator(self.locators['user_profile_name'])",
+            "Return the located element object for further operations"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        },
+        {
+          "intent": "Assert profile name text matches expected value",
+          "proposed_signature": "assert_profile_name_text(expected_name)",
+          "detailed_requirements": "Assert that the profile name text displayed in the dashboard header matches the expected value. This method should retrieve the text from the profile name element using get_user_profile_name() and perform an assertion comparing it with the expected_name parameter. Should raise an assertion error if the values do not match.",
+          "implementation_checklist": [
+            "Call existing get_user_profile_name() method to retrieve the profile name text",
+            "Store the returned text value in a variable",
+            "Assert that the retrieved text equals the expected_name parameter using standard Python assertion"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py",
+      "locator_gaps": {
+        "ui_map_file": "dashboard_page.json",
+        "present_locators": [
+          "user_profile_name"
+        ],
+        "missing_locators": []
+      }
+    }
+  ]
+}
