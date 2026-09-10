@@ -64,11 +64,11 @@
       "playwright.sync_api"
     ],
     "locator_keys": [
-      "user_profile_name",
+      "products",
       "orders",
       "success_message",
-      "cart",
-      "products"
+      "user_profile_name",
+      "cart"
     ],
     "exposed_functions": [
       {
@@ -134,6 +134,24 @@
       {
         "signature": "wait_for_success_message",
         "purpose": "Waits for the success or confirmation message element to become visible on the page using an explicit wait with appropriate timeout.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "assert_profile_name_text",
+        "purpose": "Validates that the profile name displayed in the dashboard header matches the expected value, raising an assertion error if there is a mismatch.",
+        "input_parameters": [
+          "expected_name"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "locate_profile_name_element",
+        "purpose": "Locates and returns the WebElement for the profile name displayed in the dashboard header, enabling visibility checks and text extraction operations.",
         "input_parameters": [],
         "output_parameters": [
           "Any"
