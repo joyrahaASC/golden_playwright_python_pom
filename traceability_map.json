@@ -33,10 +33,5 @@
     "file_name": "tests/web/scripts/test_suite_02_scripts.py",
     "class_name": "TestSuite02",
     "function_name": "test_user_login_and_product_search"
-  },
-  "C102": {
-    "file_name": "tests/web/scripts/test_suite_03_scripts.py",
-    "class_name": "TestSuite03Scripts",
-    "function_name": "test_contact_support_submission"
   }
 }
