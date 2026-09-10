@@ -1,0 +1,31 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Wait for confirmation message to be visible",
+      "proposed_signature": "wait_for_success_message()",
+      "detailed_requirements": "Wait for the success/confirmation message element to become visible on the dashboard after login. Should use explicit wait with appropriate timeout.",
+      "implementation_checklist": [
+        "Locate the success message element using self.page.locator(self.locators['success_message'])",
+        "Wait for 'success_message' element to be visible using .wait_for(state='visible')"
+      ],
+      "required_locator_keys": [
+        "success_message"
+      ]
+    },
+    {
+      "intent": "Assert confirmation message is visible",
+      "proposed_signature": "assert_success_message_visible()",
+      "detailed_requirements": "Assert that the success/confirmation message element is visible on the page. Should return boolean or raise assertion error if not visible.",
+      "implementation_checklist": [
+        "Locate the success message element using self.page.locator(self.locators['success_message'])",
+        "Wait for 'success_message' element to be visible using .wait_for(state='visible')",
+        "Assert 'success_message' element is visible using expect(success_message_element).to_be_visible()"
+      ],
+      "required_locator_keys": [
+        "success_message"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_page.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n\n    def get_user_profile_name(self):\n        \"\"\"Get user profile name from dashboard header.\n        \n        Locates the user profile name element in the dashboard header,\n        waits for it to be visible, and returns its text content.\n        \n        Returns:\n            str: The text content of the user profile name element.\n        \"\"\"\n        user_profile_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_element.wait_for(state=\"visible\")\n        return user_profile_element.inner_text()\n\n    def assert_user_profile_name_visible(self):\n        \"\"\"Assert user profile name is visible in dashboard header.\n        \n        Verifies that the user profile name element is displayed in the\n        dashboard header by waiting for visibility and asserting its state.\n        Raises an assertion error if the element is not visible.\n        \"\"\"\n        user_profile_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_element.wait_for(state=\"visible\")\n        expect(user_profile_element).to_be_visible()\n"
+}
