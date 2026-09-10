@@ -45,45 +45,5 @@
       "orderConfirmationText": ".hero-primary",
       "orderId": ".em-spacer-1 .ng-star-inserted"
     }
-  },
-  {
-    "file_path": "locators/web/support_page.json",
-    "locators": {
-      "footer_section": {
-        "locator": {
-          "id": "TBD_footer_section"
-        }
-      },
-      "contact_us_link": {
-        "locator": {
-          "id": "TBD_contact_us_link"
-        }
-      },
-      "support_portal_container": {
-        "locator": {
-          "id": "TBD_support_portal_container"
-        }
-      },
-      "subject_input_field": {
-        "locator": {
-          "id": "TBD_subject_input_field"
-        }
-      },
-      "message_textarea": {
-        "locator": {
-          "id": "TBD_message_textarea"
-        }
-      },
-      "submit_button": {
-        "locator": {
-          "id": "TBD_submit_button"
-        }
-      },
-      "success_confirmation_message": {
-        "locator": {
-          "id": "TBD_success_confirmation_message"
-        }
-      }
-    }
   }
 ]
