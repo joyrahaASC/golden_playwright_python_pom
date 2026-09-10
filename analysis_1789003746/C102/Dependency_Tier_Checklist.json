@@ -1,0 +1,267 @@
+{
+  "aava_config": {
+    "aava_username": "joy.raha@ascendion.com",
+    "repo_owner": "joyrahaASC",
+    "repo_name": "golden_playwright_python_pom",
+    "branch": "test5",
+    "intent_path": "pageObjects/web",
+    "platform": "web",
+    "analysis_path": "analysis_1789003746/C102",
+    "test_script_path": "tests/web/scripts/test_suite_01_scripts.py",
+    "requires_flow_container": false,
+    "language": "python",
+    "framework": "playwright",
+    "traceability_map_path": "traceability_map.json"
+  },
+  "test_case_id": "C102",
+  "tiers": {
+    "Tier_1_Locators": [
+      {
+        "ui_map_file": "dashboard_page.json",
+        "page_class_file": "dashboard_page.py",
+        "missing_locators": [
+          "success_message"
+        ]
+      },
+      {
+        "ui_map_file": "support_portal_page.json",
+        "page_class_file": "support_portal_page.py",
+        "missing_locators": [
+          "support_portal_page_header",
+          "subject_input_field",
+          "message_textarea",
+          "submit_button",
+          "loading_indicator",
+          "success_confirmation_message"
+        ]
+      },
+      {
+        "ui_map_file": "footer_navigation.json",
+        "page_class_file": "footer_navigation.py",
+        "missing_locators": [
+          "footer_section",
+          "contact_us_link"
+        ]
+      }
+    ],
+    "Tier_2_Indep_Pages": [
+      {
+        "file": "dashboard_page.py",
+        "class_name": "DashboardPage",
+        "situation": "Situation-2",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Wait for confirmation message to be visible",
+            "proposed_signature": "wait_for_success_message()",
+            "detailed_requirements": "Wait for the success/confirmation message element to become visible on the dashboard after login. Should use explicit wait with appropriate timeout.",
+            "implementation_checklist": [
+              "Locate the success message element using self.page.locator(self.locators['success_message'])",
+              "Wait for 'success_message' element to be visible using .wait_for(state='visible')"
+            ],
+            "required_locator_keys": [
+              "success_message"
+            ]
+          },
+          {
+            "intent": "Assert confirmation message is visible",
+            "proposed_signature": "assert_success_message_visible()",
+            "detailed_requirements": "Assert that the success/confirmation message element is visible on the page. Should return boolean or raise assertion error if not visible.",
+            "implementation_checklist": [
+              "Locate the success message element using self.page.locator(self.locators['success_message'])",
+              "Wait for 'success_message' element to be visible using .wait_for(state='visible')",
+              "Assert 'success_message' element is visible using expect(success_message_element).to_be_visible()"
+            ],
+            "required_locator_keys": [
+              "success_message"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/dashboard_page.py",
+        "locator_gaps": {
+          "ui_map_file": "dashboard_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "success_message"
+          ]
+        }
+      },
+      {
+        "file": "support_portal_page.py",
+        "class_name": "SupportPortal",
+        "situation": "Situation-3",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Navigate to Support Portal",
+            "proposed_signature": "navigate_to_support_portal()",
+            "detailed_requirements": "Navigate to the Support Portal page. Should handle any redirects or page transitions and wait for the support portal page to fully load.",
+            "implementation_checklist": [
+              "Call driver navigation method to navigate to support portal URL",
+              "Wait for page to fully load",
+              "Wait for 'support_portal_page_header' or key page element to be visible",
+              "Verify page loaded successfully by checking page title or header element"
+            ],
+            "required_locator_keys": [
+              "support_portal_page_header"
+            ]
+          },
+          {
+            "intent": "Input subject text",
+            "proposed_signature": "input_subject(subject_text)",
+            "detailed_requirements": "Locate the subject input field and enter the provided subject text. Should clear any existing text before input and verify text was entered successfully.",
+            "implementation_checklist": [
+              "Wait for 'subject_input_field' to be visible",
+              "Wait for 'subject_input_field' to be enabled",
+              "Clear existing text from 'subject_input_field'",
+              "Input subject_text into 'subject_input_field'",
+              "Get text value from 'subject_input_field'",
+              "Assert retrieved text matches subject_text"
+            ],
+            "required_locator_keys": [
+              "subject_input_field"
+            ]
+          },
+          {
+            "intent": "Input message text",
+            "proposed_signature": "input_message(message_text)",
+            "detailed_requirements": "Locate the message/body text area and enter the provided message text. Should clear any existing text before input and verify text was entered successfully.",
+            "implementation_checklist": [
+              "Wait for 'message_textarea' to be visible",
+              "Wait for 'message_textarea' to be enabled",
+              "Clear existing text from 'message_textarea'",
+              "Input message_text into 'message_textarea'",
+              "Get text value from 'message_textarea'",
+              "Assert retrieved text matches message_text"
+            ],
+            "required_locator_keys": [
+              "message_textarea"
+            ]
+          },
+          {
+            "intent": "Click Submit",
+            "proposed_signature": "click_submit_button()",
+            "detailed_requirements": "Locate and click the Submit button to send the support request. Should wait for button to be clickable and handle any loading states.",
+            "implementation_checklist": [
+              "Wait for 'submit_button' to be visible",
+              "Wait for 'submit_button' to be enabled",
+              "Click 'submit_button'",
+              "Wait for any loading indicator to disappear if present",
+              "Wait for page transition or confirmation message to appear"
+            ],
+            "required_locator_keys": [
+              "submit_button",
+              "loading_indicator"
+            ]
+          },
+          {
+            "intent": "Locate success confirmation message",
+            "proposed_signature": "locate_success_confirmation_message()",
+            "detailed_requirements": "Wait for and locate the success confirmation message element after form submission. Should return the element or its locator for further validation.",
+            "implementation_checklist": [
+              "Wait for 'success_confirmation_message' to be visible",
+              "Wait for 'success_confirmation_message' to be present in DOM",
+              "Return 'success_confirmation_message' element or locator"
+            ],
+            "required_locator_keys": [
+              "success_confirmation_message"
+            ]
+          },
+          {
+            "intent": "Assert confirmation text matches expected value",
+            "proposed_signature": "assert_confirmation_text(expected_text)",
+            "detailed_requirements": "Retrieve the text from the confirmation message element and assert it matches the expected confirmation text. Should perform exact or partial match based on requirements and raise assertion error if mismatch.",
+            "implementation_checklist": [
+              "Wait for 'success_confirmation_message' to be visible",
+              "Get text from 'success_confirmation_message'",
+              "Normalize retrieved text by stripping whitespace",
+              "Assert retrieved text matches expected_text exactly or contains expected_text",
+              "Raise assertion error with descriptive message if text does not match"
+            ],
+            "required_locator_keys": [
+              "success_confirmation_message"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/support_portal_page.py",
+        "locator_gaps": {
+          "ui_map_file": "support_portal_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "support_portal_page_header",
+            "subject_input_field",
+            "message_textarea",
+            "submit_button",
+            "loading_indicator",
+            "success_confirmation_message"
+          ]
+        }
+      },
+      {
+        "file": "footer_navigation.py",
+        "class_name": "FooterNavigation",
+        "situation": "Situation-3",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Scroll to footer",
+            "proposed_signature": "scroll_to_footer()",
+            "detailed_requirements": "Scroll the page down to bring the footer section into view. Should use JavaScript executor or native scroll actions to ensure footer is visible.",
+            "implementation_checklist": [
+              "Wait for 'footer_section' to be present in DOM",
+              "Execute JavaScript scroll to bring 'footer_section' into view",
+              "Wait for 'footer_section' to be visible",
+              "Verify 'footer_section' is displayed on screen"
+            ],
+            "required_locator_keys": [
+              "footer_section"
+            ]
+          },
+          {
+            "intent": "Click Contact Us link",
+            "proposed_signature": "click_contact_us_link()",
+            "detailed_requirements": "Locate and click the 'Contact Us' link in the footer section. Should wait for element to be clickable before clicking.",
+            "implementation_checklist": [
+              "Wait for 'contact_us_link' to be present",
+              "Wait for 'contact_us_link' to be clickable",
+              "Click 'contact_us_link'",
+              "Verify navigation or action completed successfully"
+            ],
+            "required_locator_keys": [
+              "contact_us_link"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/footer_navigation.py",
+        "locator_gaps": {
+          "ui_map_file": "footer_navigation.json",
+          "present_locators": [],
+          "missing_locators": [
+            "footer_section",
+            "contact_us_link"
+          ]
+        }
+      }
+    ],
+    "Tier_3_Dep_Pages": [],
+    "Tier_99_Ref": [
+      {
+        "file": "login_page.py",
+        "class_name": "LoginPage",
+        "situation": "Situation-1",
+        "resolved_intents": [
+          {
+            "intent": "Navigate to the login page",
+            "mapped_function": "go_to"
+          },
+          {
+            "intent": "Perform valid login with username and password",
+            "mapped_function": "valid_login"
+          }
+        ],
+        "missing_methods": [],
+        "path": "pageObjects/web/login_page.py"
+      }
+    ]
+  }
+}
