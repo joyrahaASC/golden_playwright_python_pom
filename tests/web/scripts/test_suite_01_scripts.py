@@ -1,34 +1,41 @@
 import pytest
-from pageObjects.web.loginPage import LoginPage
-from pageObjects.web.dashboardPage import DashboardPage
-from pageObjects.web.cartPage import CartPage
+import json
+import os
+from playwright.sync_api import expect
 
+from pageObjects.web.login_page import LoginPage
+from pageObjects.web.dashboard_page import DashboardPage
+from pageObjects.web.footer_navigation import FooterNavigation
+from pageObjects.web.support_portal import SupportPortal
+from pageObjects.web.common_scenario import CommonScenario
 
-class TestSuite01:
+def load_test_data():
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    with open(os.path.join(base_dir, "testData", "web", "test_data.json")) as f:
+        return json.load(f)
+
+def test_suite_01_scripts(page, request):
+    # TestRail ID: C102
+    test_data = load_test_data()
+    scenario = CommonScenario(page, request)
     
-    @pytest.fixture(autouse=True)
-    def setup(self, page):
-        self.loginPage = LoginPage(page)
-        self.dashboardPage = DashboardPage(page)
-        self.cartPage = CartPage(page)
+    loginPage = LoginPage(page, scenario)
+    dashboardPage = DashboardPage(page, scenario)
+    footerNavigation = FooterNavigation(page, scenario)
+    supportPortal = SupportPortal(page, scenario)
     
-    def test_case_c100(self, page):
-        """Test case for C100: Navigate, login, search product, add to cart, and verify"""
-        
-        # Navigate to the application
-        self.loginPage.go_to()
-        
-        # Perform valid login with username and password
-        self.loginPage.valid_login()
-        
-        # Search for product and add to cart
-        self.dashboardPage.search_product_add_cart()
-        
-        # Navigate to cart
-        self.dashboardPage.navigate_to_cart()
-        
-        # Verify product is displayed in cart
-        self.cartPage.verify_product_is_displayed()
-        
-        # Click checkout button
-        self.cartPage.click_checkout()
+    loginPage.go_to()
+    loginPage.valid_login(test_data["username"], test_data["password"])
+    
+    footerNavigation.scroll_to_footer()
+    footerNavigation.click_contact_us_link()
+    
+    supportPortal.navigate_to_support_portal()
+    supportPortal.input_subject()
+    supportPortal.input_message()
+    supportPortal.click_submit_button()
+    
+    supportPortal.locate_success_confirmation_message()
+    dashboardPage.wait_for_success_message()
+    dashboardPage.assert_success_message_visible()
+    supportPortal.assert_confirmation_text()
