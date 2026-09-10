@@ -1,0 +1,8 @@
+{
+  "ui_map_file_path": "locators/web/footer_navigation.json",
+  "missing_locators": [
+    "footer_section",
+    "contact_us_link"
+  ],
+  "existing_json_content": ""
+}
