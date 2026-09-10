@@ -1,0 +1,97 @@
+{
+  "python_file_path": "pageObjects/web/support_portal_page.py",
+  "missing_methods": [
+    {
+      "intent": "Navigate to Support Portal",
+      "proposed_signature": "navigate_to_support_portal()",
+      "detailed_requirements": "Navigate to the Support Portal page. Should handle any redirects or page transitions and wait for the support portal page to fully load.",
+      "implementation_checklist": [
+        "Call driver navigation method to navigate to support portal URL",
+        "Wait for page to fully load",
+        "Wait for 'support_portal_page_header' or key page element to be visible",
+        "Verify page loaded successfully by checking page title or header element"
+      ],
+      "required_locator_keys": [
+        "support_portal_page_header"
+      ]
+    },
+    {
+      "intent": "Input subject text",
+      "proposed_signature": "input_subject(subject_text)",
+      "detailed_requirements": "Locate the subject input field and enter the provided subject text. Should clear any existing text before input and verify text was entered successfully.",
+      "implementation_checklist": [
+        "Wait for 'subject_input_field' to be visible",
+        "Wait for 'subject_input_field' to be enabled",
+        "Clear existing text from 'subject_input_field'",
+        "Input subject_text into 'subject_input_field'",
+        "Get text value from 'subject_input_field'",
+        "Assert retrieved text matches subject_text"
+      ],
+      "required_locator_keys": [
+        "subject_input_field"
+      ]
+    },
+    {
+      "intent": "Input message text",
+      "proposed_signature": "input_message(message_text)",
+      "detailed_requirements": "Locate the message/body text area and enter the provided message text. Should clear any existing text before input and verify text was entered successfully.",
+      "implementation_checklist": [
+        "Wait for 'message_textarea' to be visible",
+        "Wait for 'message_textarea' to be enabled",
+        "Clear existing text from 'message_textarea'",
+        "Input message_text into 'message_textarea'",
+        "Get text value from 'message_textarea'",
+        "Assert retrieved text matches message_text"
+      ],
+      "required_locator_keys": [
+        "message_textarea"
+      ]
+    },
+    {
+      "intent": "Click Submit",
+      "proposed_signature": "click_submit_button()",
+      "detailed_requirements": "Locate and click the Submit button to send the support request. Should wait for button to be clickable and handle any loading states.",
+      "implementation_checklist": [
+        "Wait for 'submit_button' to be visible",
+        "Wait for 'submit_button' to be enabled",
+        "Click 'submit_button'",
+        "Wait for any loading indicator to disappear if present",
+        "Wait for page transition or confirmation message to appear"
+      ],
+      "required_locator_keys": [
+        "submit_button",
+        "loading_indicator"
+      ]
+    },
+    {
+      "intent": "Locate success confirmation message",
+      "proposed_signature": "locate_success_confirmation_message()",
+      "detailed_requirements": "Wait for and locate the success confirmation message element after form submission. Should return the element or its locator for further validation.",
+      "implementation_checklist": [
+        "Wait for 'success_confirmation_message' to be visible",
+        "Wait for 'success_confirmation_message' to be present in DOM",
+        "Return 'success_confirmation_message' element or locator"
+      ],
+      "required_locator_keys": [
+        "success_confirmation_message"
+      ]
+    },
+    {
+      "intent": "Assert confirmation text matches expected value",
+      "proposed_signature": "assert_confirmation_text(expected_text)",
+      "detailed_requirements": "Retrieve the text from the confirmation message element and assert it matches the expected confirmation text. Should perform exact or partial match based on requirements and raise assertion error if mismatch.",
+      "implementation_checklist": [
+        "Wait for 'success_confirmation_message' to be visible",
+        "Get text from 'success_confirmation_message'",
+        "Normalize retrieved text by stripping whitespace",
+        "Assert retrieved text matches expected_text exactly or contains expected_text",
+        "Raise assertion error with descriptive message if text does not match"
+      ],
+      "required_locator_keys": [
+        "success_confirmation_message"
+      ]
+    }
+  ],
+  "class_name": "SupportPortal",
+  "flow_name": "support_portal_page"
+}
