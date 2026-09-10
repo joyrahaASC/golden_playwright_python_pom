@@ -54,3 +54,23 @@ class DashboardPage(CommonPage):
         user_profile_element = self.page.locator(self.locators["user_profile_name"])
         user_profile_element.wait_for(state="visible")
         expect(user_profile_element).to_be_visible()
+
+    def wait_for_success_message(self):
+        """Wait for confirmation message to be visible.
+        
+        Waits for the success/confirmation message element to become visible
+        on the dashboard after login using explicit wait with appropriate timeout.
+        """
+        success_message_element = self.page.locator(self.locators["success_message"])
+        success_message_element.wait_for(state="visible")
+
+    def assert_success_message_visible(self):
+        """Assert confirmation message is visible.
+        
+        Asserts that the success/confirmation message element is visible on the page.
+        Waits for the element to be visible and then performs an assertion.
+        Raises an assertion error if the element is not visible.
+        """
+        success_message_element = self.page.locator(self.locators["success_message"])
+        success_message_element.wait_for(state="visible")
+        expect(success_message_element).to_be_visible()
