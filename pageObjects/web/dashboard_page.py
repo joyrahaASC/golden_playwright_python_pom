@@ -74,3 +74,32 @@ class DashboardPage(CommonPage):
         success_message_element = self.page.locator(self.locators["success_message"])
         success_message_element.wait_for(state="visible")
         expect(success_message_element).to_be_visible()
+
+    def locate_profile_name_element(self):
+        """Locate profile name element in dashboard header.
+        
+        Locates and returns the WebElement for the profile name in the dashboard header.
+        This method uses the appropriate locator strategy to find the profile name element
+        and returns the element object for further operations like visibility checks or text extraction.
+        
+        Returns:
+            Locator: The Playwright locator object for the user profile name element.
+        """
+        return self.page.locator(self.locators['user_profile_name'])
+
+    def assert_profile_name_text(self, expected_name):
+        """Assert profile name text matches expected value.
+        
+        Asserts that the profile name text displayed in the dashboard header matches
+        the expected value. This method retrieves the text from the profile name element
+        using get_user_profile_name() and performs an assertion comparing it with the
+        expected_name parameter.
+        
+        Args:
+            expected_name (str): The expected profile name text to compare against.
+            
+        Raises:
+            AssertionError: If the retrieved profile name does not match the expected value.
+        """
+        actual_name = self.get_user_profile_name()
+        assert actual_name == expected_name, f"Expected profile name '{expected_name}', but got '{actual_name}'"
