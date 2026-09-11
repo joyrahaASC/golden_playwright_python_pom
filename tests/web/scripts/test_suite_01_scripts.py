@@ -1,6 +1,7 @@
 import pytest
 import json
 import os
+from playwright.sync_api import expect
 
 from pageObjects.web.login_page import LoginPage
 from pageObjects.web.dashboard_page import DashboardPage
@@ -17,7 +18,6 @@ def test_suite_01_scripts(page, request):
     test_data = load_test_data()
     scenario = CommonScenario(page, request)
     
-    # Initialize Page Objects directly in the test
     loginPage = LoginPage(page, scenario)
     dashboardPage = DashboardPage(page, scenario)
     cartPage = CartPage(page, scenario)
@@ -29,4 +29,13 @@ def test_suite_01_scripts(page, request):
     dashboardPage.navigate_to_cart()
 
     cartPage.verify_product_is_displayed("Zara Coat 3")
+    
+    # Explicit assertion to verify product is displayed in cart
+    product_locator = page.locator("h3:has-text('Zara Coat 3')")
+    assert product_locator.is_visible(), "Product 'Zara Coat 3' should be visible in the cart"
+    
     cartPage.click_checkout()
+    
+    # Verify checkout button was clicked and navigation occurred
+    page.wait_for_load_state("networkidle")
+    assert "review" in page.url or "checkout" in page.url, "Should navigate to checkout/review page after clicking checkout"
