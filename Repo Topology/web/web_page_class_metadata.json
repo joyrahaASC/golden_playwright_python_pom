@@ -106,8 +106,6 @@
     ],
     "locator_keys": [
       "cart",
-      "user_profile_name",
-      "profile_name",
       "products",
       "orders"
     ],
