@@ -23,10 +23,5 @@
     "file_name": "tests/web/cart/test_view_order_details.py",
     "class_name": "",
     "function_name": "test_view_order_details"
-  },
-  "C101": {
-    "file_name": "tests/web/scripts/test_suite_01_scripts.py",
-    "class_name": "",
-    "function_name": "test_suite_01_scripts"
   }
 }
