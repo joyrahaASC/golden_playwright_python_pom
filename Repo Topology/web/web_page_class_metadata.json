@@ -201,9 +201,10 @@
       "os"
     ],
     "locator_keys": [
-      "cart",
+      "profile_name",
+      "orders",
       "products",
-      "orders"
+      "cart"
     ],
     "exposed_functions": [
       {
