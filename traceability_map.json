@@ -28,5 +28,10 @@
     "file_name": "tests/web/scripts/test_suite_01_scripts.py",
     "class_name": "",
     "function_name": "test_suite_01_scripts"
+  },
+  "C101": {
+    "file_name": "tests/web/scripts/test_suite_01_scripts.py",
+    "class_name": "",
+    "function_name": "test_suite_01_scripts"
   }
 }
