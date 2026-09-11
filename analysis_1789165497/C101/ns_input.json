@@ -49,5 +49,6 @@
       "mapped_function": "__init__",
       "page_object_name": "loginPage"
     }
-  ]
+  ],
+  "previous_feedback": "Missing assertions: The script calls methods but lacks explicit assertion statements to validate the test outcome. Reference scripts include assertions like 'assert order_id is not None' or 'assert no_products_message.is_visible()'. Add at least one assertion to verify application state (e.g., assert user_profile_name is not None or verify cart state)."
 }
