@@ -2,6 +2,5 @@
     "products": ".card-body",
     "productsText": ".card-body b",
     "cart": "[routerlink*='cart']",
-    "orders": "button[routerlink*='myorders']",
-    "user_profile_name": "TBD_user_profile_name"
+    "orders": "button[routerlink*='myorders']"
 }
