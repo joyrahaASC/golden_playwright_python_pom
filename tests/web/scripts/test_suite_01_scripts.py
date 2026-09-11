@@ -19,7 +19,6 @@ def test_suite_01_scripts(page, request):
     # Initialize Page Objects directly in the test
     loginPage = LoginPage(page, scenario)
     dashboardPage = DashboardPage(page, scenario)
-    commonScenario = CommonScenario(page, request)
     
     loginPage.go_to()
     loginPage.valid_login(test_data["username"], test_data["password"])
@@ -28,4 +27,6 @@ def test_suite_01_scripts(page, request):
     dashboardPage.navigate_to_cart()
 
     user_profile_name = dashboardPage.get_user_profile_name()
+    assert user_profile_name is not None, "User profile name should be visible in dashboard header"
+    
     dashboardPage.verify_user_profile_visible()
