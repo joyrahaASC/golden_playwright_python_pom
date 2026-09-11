@@ -107,7 +107,6 @@
     "locator_keys": [
       "orders",
       "products",
-      "dashboard_header_profile_name",
       "cart"
     ],
     "exposed_functions": [
