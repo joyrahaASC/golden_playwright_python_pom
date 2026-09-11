@@ -1,0 +1,107 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "common_scenario.py",
+      "class_name": "CommonScenario",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Initialize common scenario object",
+          "mapped_function": "__init__"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/common_scenario.py"
+    },
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Load test data from JSON file",
+          "mapped_function": "load_test_data"
+        },
+        {
+          "intent": "Initialize login page object",
+          "mapped_function": "__init__"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Initialize dashboard page object",
+          "mapped_function": "__init__"
+        },
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Locate profile name element in dashboard header",
+          "proposed_signature": "get_profile_name_element()",
+          "detailed_requirements": "Locate and return the WebElement representing the profile name in the dashboard header. This method should wait for the element to be visible and return the element object for further operations like reading text or assertions.",
+          "implementation_checklist": [
+            "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+            "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+            "Return the located element object"
+          ],
+          "required_locator_keys": [
+            "profile_name"
+          ]
+        },
+        {
+          "intent": "Read displayed profile name text",
+          "proposed_signature": "get_profile_name_text()",
+          "detailed_requirements": "Retrieve and return the text content of the profile name element displayed in the dashboard header. This method should wait for the element to be visible, extract the text using .text property, and return it as a string.",
+          "implementation_checklist": [
+            "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+            "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+            "Extract text content from 'profile_name' element using .text_content() or .inner_text()",
+            "Return the extracted text as a string"
+          ],
+          "required_locator_keys": [
+            "profile_name"
+          ]
+        },
+        {
+          "intent": "Assert displayed profile name matches expected value",
+          "proposed_signature": "verify_profile_name(expected_name)",
+          "detailed_requirements": "Verify that the displayed profile name in the dashboard header matches the expected value. This method should: 1) Locate the profile name element, 2) Extract its text content, 3) Compare it with the expected_name parameter using an assertion (assert or assertEqual), 4) Optionally take a screenshot for documentation. Input: expected_name (string). Returns: None or raises AssertionError if mismatch.",
+          "implementation_checklist": [
+            "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+            "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+            "Extract text content from 'profile_name' element using .text_content() or .inner_text()",
+            "Assert extracted text equals expected_name parameter using expect().to_have_text() or assert statement",
+            "Optionally capture screenshot for documentation using self.page.screenshot()"
+          ],
+          "required_locator_keys": [
+            "profile_name"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py"
+    }
+  ]
+}
