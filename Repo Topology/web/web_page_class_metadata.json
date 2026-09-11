@@ -105,10 +105,11 @@
       "os"
     ],
     "locator_keys": [
-      "products",
       "cart",
-      "orders",
-      "user_profile_name"
+      "user_profile_name",
+      "profile_name",
+      "products",
+      "orders"
     ],
     "exposed_functions": [
       {
