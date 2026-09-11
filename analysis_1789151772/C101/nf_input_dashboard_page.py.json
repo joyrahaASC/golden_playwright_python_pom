@@ -1,0 +1,36 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Verify dashboard header profile name is visible",
+      "proposed_signature": "verify_profile_name_visible()",
+      "detailed_requirements": "Wait for the dashboard header profile name element to be visible on the page. This method should locate the profile name element in the dashboard header and verify its visibility state. Return True if visible, False otherwise.",
+      "implementation_checklist": [
+        "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+        "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+        "Check visibility state of 'profile_name' element using is_visible()",
+        "Return True if 'profile_name' is visible, False otherwise"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    },
+    {
+      "intent": "Assert dashboard header profile name",
+      "proposed_signature": "assert_profile_name(expected_name)",
+      "detailed_requirements": "Wait for the dashboard header profile name element and retrieve its text content. Compare the actual profile name text with the expected_name parameter. Assert that they match exactly. Raise an assertion error with a descriptive message if they do not match.",
+      "implementation_checklist": [
+        "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+        "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+        "Get text content from 'profile_name' element using text_content() or inner_text()",
+        "Compare actual profile name text with expected_name parameter",
+        "Use expect() assertion to verify text matches expected_name",
+        "Raise assertion error with descriptive message if texts do not match exactly"
+      ],
+      "required_locator_keys": [
+        "profile_name"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_page.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n"
+}
