@@ -1,0 +1,70 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Verify dashboard header profile name is visible",
+          "proposed_signature": "verify_profile_name_visible()",
+          "detailed_requirements": "Wait for the dashboard header profile name element to be visible on the page. This method should locate the profile name element in the dashboard header and verify its visibility state. Return True if visible, False otherwise.",
+          "implementation_checklist": [
+            "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+            "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+            "Check visibility state of 'profile_name' element using is_visible()",
+            "Return True if 'profile_name' is visible, False otherwise"
+          ],
+          "required_locator_keys": [
+            "profile_name"
+          ]
+        },
+        {
+          "intent": "Assert dashboard header profile name",
+          "proposed_signature": "assert_profile_name(expected_name)",
+          "detailed_requirements": "Wait for the dashboard header profile name element and retrieve its text content. Compare the actual profile name text with the expected_name parameter. Assert that they match exactly. Raise an assertion error with a descriptive message if they do not match.",
+          "implementation_checklist": [
+            "Locate 'profile_name' element using self.page.locator(self.locators['profile_name'])",
+            "Wait for 'profile_name' element to be visible using wait_for(state='visible')",
+            "Get text content from 'profile_name' element using text_content() or inner_text()",
+            "Compare actual profile name text with expected_name parameter",
+            "Use expect() assertion to verify text matches expected_name",
+            "Raise assertion error with descriptive message if texts do not match exactly"
+          ],
+          "required_locator_keys": [
+            "profile_name"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py"
+    }
+  ]
+}
