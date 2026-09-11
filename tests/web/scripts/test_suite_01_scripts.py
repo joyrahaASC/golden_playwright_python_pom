@@ -1,6 +1,7 @@
 import pytest
 import json
 import os
+from playwright.sync_api import expect
 
 from pageObjects.web.login_page import LoginPage
 from pageObjects.web.dashboard_page import DashboardPage
@@ -23,5 +24,11 @@ def test_suite_01_scripts(page, request):
     loginPage.valid_login(test_data["username"], test_data["password"])
     
     dashboardPage.verify_profile_name_visible()
+    
     dashboardPage.search_product_add_cart("Zara Coat 3")
     dashboardPage.navigate_to_cart()
+    
+    # Assert cart page is loaded
+    cart_products = page.locator(".cartSection h3")
+    cart_products.first.wait_for(state="visible")
+    assert cart_products.count() > 0, "Cart should contain products after adding items"
