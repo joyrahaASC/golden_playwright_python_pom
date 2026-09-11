@@ -1,0 +1,48 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": []
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Get dashboard header profile name",
+          "proposed_signature": "get_dashboard_header_profile_name()",
+          "detailed_requirements": "Locate the profile name element in the dashboard header and return its text value. This method should wait for the element to be visible before extracting the text."
+        },
+        {
+          "intent": "Assert dashboard header profile name",
+          "proposed_signature": "assert_dashboard_header_profile_name(expected_name)",
+          "detailed_requirements": "Retrieve the profile name from the dashboard header using get_dashboard_header_profile_name() and assert that it matches the expected_name parameter. Should raise an assertion error with a descriptive message if the names do not match."
+        }
+      ]
+    }
+  ]
+}
