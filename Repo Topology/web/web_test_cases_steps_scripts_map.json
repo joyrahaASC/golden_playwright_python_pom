@@ -1,0 +1,148 @@
+{
+  "C99": {
+    "script_file_path": "tests/web/cart/test_view_order_details.py",
+    "correlation_map": {
+      "1. Login with valid credentials.": {
+        "Load test data": "test_data = load_test_data()",
+        "Initialize common scenario": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Initialize dashboard page object": "dashboard_page = DashboardPage(page, scenario)",
+        "Initialize orders history page object": "orders_history_page = OrdersHistoryPage(page, scenario)",
+        "Navigate to login page": "login_page.go_to()",
+        "Perform valid login with credentials": "login_page.valid_login(test_data['username'], test_data['password'])"
+      },
+      "2. Navigate to the Orders History page.": {
+        "Navigate to orders page": "dashboard_page.navigate_to_orders()"
+      },
+      "3. Select an existing order and click View.": {
+        "Locate first view button": "first_view_button = page.locator(\"button:has-text('View')\").first",
+        "Click the view button": "first_view_button.click()"
+      },
+      "4. Verify that the Order Details page is displayed with the correct order information.": {
+        "Locate order summary element": "order_summary = page.locator('.email-title')",
+        "Wait for order summary to be visible": "order_summary.wait_for(state='visible')",
+        "Assert order summary is visible": "assert order_summary.is_visible(), 'Order Summary details should be visible'"
+      }
+    }
+  },
+  "C96": {
+    "script_file_path": "tests/web/login/test_invalid_login.py",
+    "correlation_map": {
+      "1. Navigate to the application login page.": {
+        "Load test data from JSON file": "test_data = load_test_data()",
+        "Initialize common scenario object": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Navigate to the login page": "login_page.go_to()"
+      },
+      "2. Enter invalid username and password.": {
+        "Enter invalid credentials into login form": "login_page.valid_login('invalid_user@play.com', 'WrongPassword123')"
+      },
+      "3. Click on the Login button.": {
+        "[Automation Gap] No code mapped to this step": "NO_CODE_FOUND"
+      },
+      "4. Verify that an error message is displayed and the user is not logged in.": {
+        "Locate the error message element": "error_message = page.locator(\"[class*='toast-message']\")",
+        "Wait for error message to be visible": "error_message.wait_for(state='visible')",
+        "Assert error message is displayed": "assert error_message.is_visible(), 'Error message should be displayed for invalid login'"
+      }
+    }
+  },
+  "C97": {
+    "script_file_path": "tests/web/cart/test_add_remove_cart.py",
+    "correlation_map": {
+      "1. Login with valid credentials.": {
+        "Load test data from JSON file": "test_data = load_test_data()",
+        "Initialize common scenario object": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Initialize dashboard page object": "dashboard_page = DashboardPage(page, scenario)",
+        "Initialize cart page object": "cart_page = CartPage(page, scenario)",
+        "Navigate to the login page": "login_page.go_to()",
+        "Perform valid login with username and password": "login_page.valid_login(test_data['username'], test_data['password'])"
+      },
+      "2. Search for a product and add it to the cart.": {
+        "Search for product and add to cart": "dashboard_page.search_product_add_cart('Zara Coat 3')"
+      },
+      "3. Navigate to the cart page.": {
+        "Navigate to the cart page": "dashboard_page.navigate_to_cart()",
+        "Verify the product is displayed in cart": "cart_page.verify_product_is_displayed('Zara Coat 3')"
+      },
+      "4. Remove the product from the cart.": {
+        "Click the Delete button to remove product": "page.locator(\"button:has-text('Delete')\").first.click()",
+        "Wait for network to be idle after deletion": "page.wait_for_load_state('networkidle')"
+      },
+      "5. Verify the cart is empty.": {
+        "Locate the no products message": "no_products_message = page.locator('text=No Products in Your Cart !')",
+        "Assert the empty cart message is visible": "assert no_products_message.is_visible(), 'Cart should be empty after removing the product'"
+      }
+    }
+  },
+  "C98": {
+    "script_file_path": "tests/web/checkout/test_empty_cart_checkout.py",
+    "correlation_map": {
+      "1. Login with valid credentials.": {
+        "Load test data from JSON file": "test_data = load_test_data()",
+        "Initialize common scenario object": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Initialize dashboard page object": "dashboard_page = DashboardPage(page, scenario)",
+        "Initialize cart page object": "cart_page = CartPage(page, scenario)",
+        "Navigate to the login page": "login_page.go_to()",
+        "Perform valid login with username and password": "login_page.valid_login(test_data['username'], test_data['password'])"
+      },
+      "2. Navigate directly to the cart page without adding any products.": {
+        "Navigate to cart page": "dashboard_page.navigate_to_cart()"
+      },
+      "3. Verify that the cart is empty.": {
+        "Locate the no products message": "no_products_message = page.locator('text=No Products in Your Cart !')",
+        "Assert that the no products message is visible": "assert no_products_message.is_visible(), 'Cart should be empty'"
+      },
+      "4. Click on the Checkout button.": {
+        "Locate the checkout button": "checkout_button = page.get_by_role('button', name='Checkout\u276f')"
+      },
+      "5. Verify that checkout is blocked.": {
+        "Assert that checkout button is disabled or not visible": "assert not checkout_button.is_enabled() or not checkout_button.is_visible(), 'Checkout should be blocked for an empty cart'"
+      }
+    }
+  },
+  "C95": {
+    "script_file_path": "tests/web/checkout/test_product_checkout.py",
+    "correlation_map": {
+      "1. Navigate to the application and login with valid credentials.": {
+        "Load test data from JSON file": "test_data = load_test_data()",
+        "Initialize common scenario object": "scenario = CommonScenario(page, request)",
+        "Initialize login page object": "login_page = LoginPage(page, scenario)",
+        "Initialize dashboard page object": "dashboard_page = DashboardPage(page, scenario)",
+        "Initialize cart page object": "cart_page = CartPage(page, scenario)",
+        "Initialize orders review page object": "orders_review_page = OrdersReviewPage(page, scenario)",
+        "Initialize orders history page object": "orders_history_page = OrdersHistoryPage(page, scenario)",
+        "Navigate to the application": "login_page.go_to()",
+        "Login with valid credentials": "login_page.valid_login(test_data['username'], test_data['password'])"
+      },
+      "2. Search for a product (e.g., \"Zara Coat 3\") and add it to the cart.": {
+        "Search for product and add to cart": "dashboard_page.search_product_add_cart('Zara Coat 3')"
+      },
+      "3. Navigate to the cart and verify the product is displayed.": {
+        "Navigate to cart": "dashboard_page.navigate_to_cart()",
+        "Verify product is displayed in cart": "cart_page.verify_product_is_displayed('Zara Coat 3')"
+      },
+      "4. Proceed to checkout.": {
+        "Click checkout button": "cart_page.click_checkout()"
+      },
+      "5. Select country and submit the order.": {
+        "Search and select country": "orders_review_page.search_country_and_select('ind', 'India')",
+        "Submit order and get order ID": "orders_review_page.submit_and_get_order_id()"
+      },
+      "6. Verify order confirmation and capture Order ID.": {
+        "Retrieve order ID from scenario": "order_id = scenario.get_value('orderId')",
+        "Assert order ID is not None": "assert order_id is not None, 'Order ID should be generated after submission'"
+      },
+      "7. Navigate to Orders History.": {
+        "Navigate to orders history page": "dashboard_page.navigate_to_orders()",
+        "Search and select order": "orders_history_page.search_order_and_select()"
+      },
+      "8. Verify the order appears in the history with the correct Order ID.": {
+        "Get order ID from history": "history_order_id = orders_history_page.get_order_id()",
+        "Assert order ID matches in history": "assert order_id in history_order_id, f'Expected Order ID {order_id} in history, but got {history_order_id}'"
+      }
+    }
+  }
+}
