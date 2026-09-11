@@ -30,31 +30,3 @@ class DashboardPage(CommonPage):
         self.page.locator(self.locators["cart"]).click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_load_state("domcontentloaded")
-
-    def get_dashboard_header_profile_name(self):
-        """Get the profile name from the dashboard header.
-        
-        This method locates the profile name element in the dashboard header,
-        waits for it to be visible, and returns its text content.
-        
-        Returns:
-            str: The text content of the profile name element.
-        """
-        profile_name_locator = self.page.locator(self.locators["dashboard_header_profile_name"])
-        profile_name_locator.wait_for(state="visible")
-        return profile_name_locator.inner_text()
-
-    def assert_dashboard_header_profile_name(self, expected_name):
-        """Assert that the dashboard header profile name matches the expected value.
-        
-        This method retrieves the actual profile name from the dashboard header
-        and asserts that it matches the expected name parameter.
-        
-        Args:
-            expected_name (str): The expected profile name to validate against.
-        
-        Raises:
-            AssertionError: If the actual profile name does not match the expected name.
-        """
-        actual_name = self.get_dashboard_header_profile_name()
-        assert actual_name == expected_name, f"Profile name mismatch: expected '{expected_name}', but got '{actual_name}'"
