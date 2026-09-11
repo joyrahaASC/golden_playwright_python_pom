@@ -17,7 +17,6 @@ def test_suite_01_scripts(page, request):
     test_data = load_test_data()
     scenario = CommonScenario(page, request)
     
-    # Initialize Page Objects directly in the test
     loginPage = LoginPage(page, scenario)
     dashboardPage = DashboardPage(page, scenario)
     cartPage = CartPage(page, scenario)
