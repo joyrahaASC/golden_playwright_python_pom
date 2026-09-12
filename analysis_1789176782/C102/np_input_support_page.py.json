@@ -1,0 +1,84 @@
+{
+  "python_file_path": "pageObjects/web/support_page.py",
+  "missing_methods": [
+    {
+      "intent": "Navigate to support portal",
+      "proposed_signature": "verify_support_portal_loaded()",
+      "detailed_requirements": "Verify that the support portal page has loaded successfully by checking for a unique element or page title that confirms the user is on the support portal.",
+      "implementation_checklist": [
+        "Wait for 'support_portal_header' to be visible",
+        "Assert 'support_portal_header' is displayed",
+        "Optionally get text from 'support_portal_header' and verify it contains expected text (e.g., 'Support Portal' or 'Help Center')"
+      ],
+      "required_locator_keys": [
+        "support_portal_header"
+      ]
+    },
+    {
+      "intent": "Input subject text",
+      "proposed_signature": "input_subject(subject_text)",
+      "detailed_requirements": "Locate the subject input field on the support portal form and enter the provided subject text. Parameters: subject_text (string) - the subject line for the support request.",
+      "implementation_checklist": [
+        "Wait for 'subject_input_field' to be visible",
+        "Clear 'subject_input_field'",
+        "Input subject_text into 'subject_input_field'"
+      ],
+      "required_locator_keys": [
+        "subject_input_field"
+      ]
+    },
+    {
+      "intent": "Input message text",
+      "proposed_signature": "input_message(message_text)",
+      "detailed_requirements": "Locate the message input field or text area on the support portal form and enter the provided message text. Parameters: message_text (string) - the detailed message content for the support request.",
+      "implementation_checklist": [
+        "Wait for 'message_textarea' to be visible",
+        "Clear 'message_textarea'",
+        "Input message_text into 'message_textarea'"
+      ],
+      "required_locator_keys": [
+        "message_textarea"
+      ]
+    },
+    {
+      "intent": "Click submit button",
+      "proposed_signature": "click_submit_button()",
+      "detailed_requirements": "Locate and click the submit button on the support portal form to submit the support request.",
+      "implementation_checklist": [
+        "Wait for 'submit_button' to be visible",
+        "Wait for 'submit_button' to be enabled",
+        "Click 'submit_button'"
+      ],
+      "required_locator_keys": [
+        "submit_button"
+      ]
+    },
+    {
+      "intent": "Wait for success confirmation message to be visible",
+      "proposed_signature": "wait_for_confirmation_message()",
+      "detailed_requirements": "Wait for the success confirmation message element to become visible on the page after form submission. Use an explicit wait with appropriate timeout.",
+      "implementation_checklist": [
+        "Wait for 'confirmation_message' to be visible with explicit timeout"
+      ],
+      "required_locator_keys": [
+        "confirmation_message"
+      ]
+    },
+    {
+      "intent": "Assert confirmation message is displayed",
+      "proposed_signature": "verify_confirmation_message_displayed()",
+      "detailed_requirements": "Assert that the success confirmation message is displayed on the page and optionally verify the message text contains expected confirmation content (e.g., 'Your request has been submitted successfully').",
+      "implementation_checklist": [
+        "Wait for 'confirmation_message' to be visible",
+        "Assert 'confirmation_message' is displayed",
+        "Get text from 'confirmation_message'",
+        "Assert text contains expected confirmation content (e.g., 'submitted successfully' or 'request has been submitted')"
+      ],
+      "required_locator_keys": [
+        "confirmation_message"
+      ]
+    }
+  ],
+  "class_name": "Support",
+  "flow_name": "support_page"
+}
