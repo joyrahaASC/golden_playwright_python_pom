@@ -15,7 +15,8 @@
       "products": ".card-body",
       "productsText": ".card-body b",
       "cart": "[routerlink*='cart']",
-      "orders": "button[routerlink*='myorders']"
+      "orders": "button[routerlink*='myorders']",
+      "dashboard_header_profile_name": "TBD_dashboard_header_profile_name"
     }
   },
   {
