@@ -1,0 +1,77 @@
+{
+  "test_case_id": "C102",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the login page",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": []
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Scroll to Contact Us or Support link in footer",
+          "proposed_signature": "scroll_to_footer_support_link()",
+          "detailed_requirements": "Scroll down to the footer section of the dashboard page and ensure the Contact Us or Support link is visible in the viewport."
+        },
+        {
+          "intent": "Click Contact Us or Support link in footer",
+          "proposed_signature": "click_footer_support_link()",
+          "detailed_requirements": "Locate and click the Contact Us or Support link in the footer section of the dashboard page. This should navigate to the support portal."
+        }
+      ]
+    },
+    {
+      "file": "support_page.py",
+      "class_name": "Support",
+      "situation": "Situation-3",
+      "resolved_intents": [],
+      "missing_methods": [
+        {
+          "intent": "Navigate to support portal",
+          "proposed_signature": "verify_support_portal_loaded()",
+          "detailed_requirements": "Verify that the support portal page has loaded successfully by checking for a unique element or page title that confirms the user is on the support portal."
+        },
+        {
+          "intent": "Input subject text",
+          "proposed_signature": "input_subject(subject_text)",
+          "detailed_requirements": "Locate the subject input field on the support portal form and enter the provided subject text. Parameters: subject_text (string) - the subject line for the support request."
+        },
+        {
+          "intent": "Input message text",
+          "proposed_signature": "input_message(message_text)",
+          "detailed_requirements": "Locate the message input field or text area on the support portal form and enter the provided message text. Parameters: message_text (string) - the detailed message content for the support request."
+        },
+        {
+          "intent": "Click submit button",
+          "proposed_signature": "click_submit_button()",
+          "detailed_requirements": "Locate and click the submit button on the support portal form to submit the support request."
+        },
+        {
+          "intent": "Wait for success confirmation message to be visible",
+          "proposed_signature": "wait_for_confirmation_message()",
+          "detailed_requirements": "Wait for the success confirmation message element to become visible on the page after form submission. Use an explicit wait with appropriate timeout."
+        },
+        {
+          "intent": "Assert confirmation message is displayed",
+          "proposed_signature": "verify_confirmation_message_displayed()",
+          "detailed_requirements": "Assert that the success confirmation message is displayed on the page and optionally verify the message text contains expected confirmation content (e.g., 'Your request has been submitted successfully')."
+        }
+      ]
+    }
+  ]
+}
