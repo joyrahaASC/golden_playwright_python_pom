@@ -1,0 +1,156 @@
+{
+  "aava_config": {
+    "aava_username": "joy.raha@ascendion.com",
+    "repo_owner": "joyrahaASC",
+    "repo_name": "golden_playwright_python_pom",
+    "branch": "test9",
+    "intent_path": "pageObjects/web",
+    "platform": "web",
+    "analysis_path": "analysis_1789176782/C101",
+    "test_script_path": "tests/web/scripts/test_suite_02_scripts.py",
+    "requires_flow_container": false,
+    "language": "python",
+    "framework": "playwright",
+    "traceability_map_path": "traceability_map.json",
+    "topology": {
+      "shadow_branch_name": "shadow_repo_topology_1789176177",
+      "global_context": {
+        "aava_username": "joy.raha@ascendion.com",
+        "repo_owner": "joyrahaASC",
+        "repo_name": "golden_playwright_python_pom",
+        "working_branch": "test9"
+      },
+      "platforms": {
+        "web": {
+          "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
+          "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
+          "page_class_path": "pageObjects/web",
+          "locators_path": "locators/web",
+          "test_cases_steps_scripts_map_path": "Repo Topology/web/web_test_cases_steps_scripts_map.json",
+          "script_path": "tests/web"
+        },
+        "windows": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "android": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "ios": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "mac": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        }
+      }
+    }
+  },
+  "test_case_id": "C101",
+  "tiers": {
+    "Tier_1_Locators": [
+      {
+        "ui_map_file": "dashboard_page.json",
+        "page_class_file": "dashboard_page.py",
+        "missing_locators": [
+          "user_profile_name"
+        ]
+      }
+    ],
+    "Tier_2_Indep_Pages": [
+      {
+        "file": "dashboard_page.py",
+        "class_name": "DashboardPage",
+        "situation": "Situation-2",
+        "resolved_intents": [
+          {
+            "intent": "Search for product and add to cart",
+            "mapped_function": "search_product_add_cart"
+          },
+          {
+            "intent": "Navigate to the cart page",
+            "mapped_function": "navigate_to_cart"
+          }
+        ],
+        "missing_methods": [
+          {
+            "intent": "Get user profile name from dashboard header",
+            "proposed_signature": "get_user_profile_name()",
+            "detailed_requirements": "Locate the user profile name element in the dashboard header and return its text value. This method should wait for the element to be visible and extract the displayed username or profile name.",
+            "implementation_checklist": [
+              "Wait for 'user_profile_name' element to be visible using wait_for(state='visible')",
+              "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+              "Get text content from 'user_profile_name' element using text_content() or inner_text()",
+              "Return the extracted text value"
+            ],
+            "required_locator_keys": [
+              "user_profile_name"
+            ]
+          },
+          {
+            "intent": "Assert user profile name is visible in dashboard header",
+            "proposed_signature": "verify_user_profile_name_visible(expected_name)",
+            "detailed_requirements": "Verify that the user profile name element is visible in the dashboard header and optionally assert that it matches the expected name. This method should wait for the element to be visible and return a boolean or raise an assertion error if not visible or if the name doesn't match.",
+            "implementation_checklist": [
+              "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+              "Wait for 'user_profile_name' element to be visible using wait_for(state='visible')",
+              "Assert 'user_profile_name' element is visible using expect(element).to_be_visible()",
+              "Get text content from 'user_profile_name' element using text_content() or inner_text()",
+              "Assert the retrieved text matches expected_name parameter",
+              "Return boolean True if all assertions pass or raise assertion error if not"
+            ],
+            "required_locator_keys": [
+              "user_profile_name"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/dashboard_page.py",
+        "locator_gaps": {
+          "ui_map_file": "dashboard_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "user_profile_name"
+          ]
+        }
+      }
+    ],
+    "Tier_3_Dep_Pages": [],
+    "Tier_99_Ref": [
+      {
+        "file": "login_page.py",
+        "class_name": "LoginPage",
+        "situation": "Situation-1",
+        "resolved_intents": [
+          {
+            "intent": "Navigate to the application",
+            "mapped_function": "go_to"
+          },
+          {
+            "intent": "Load test data from JSON file",
+            "mapped_function": "load_test_data"
+          },
+          {
+            "intent": "Perform valid login with username and password",
+            "mapped_function": "valid_login"
+          }
+        ],
+        "missing_methods": [],
+        "path": "pageObjects/web/login_page.py"
+      }
+    ]
+  }
+}
