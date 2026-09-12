@@ -1,0 +1,58 @@
+{
+  "test_script_path": "tests/web/scripts/test_suite_03_scripts.py",
+  "top_5_reference_file": "analysis_1789176782/C102/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Navigate to the login page",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Perform valid login with username and password",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Scroll to Contact Us or Support link in footer",
+      "label": "",
+      "mapped_function": "scroll_to_footer_support_link",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Click Contact Us or Support link in footer",
+      "label": "",
+      "mapped_function": "click_footer_support_link",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to support portal",
+      "label": "",
+      "mapped_function": "verify_support_portal_loaded",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Input subject text",
+      "label": "",
+      "mapped_function": "input_subject",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Input message text",
+      "label": "",
+      "mapped_function": "input_message",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Click submit button",
+      "label": "",
+      "mapped_function": "click_submit_button",
+      "page_object_name": "support"
+    },
+    {
+      "intent": "Wait for success confirmation message to be visible",
+      "label": "",
+      "mapped_function": "wait_for_confirmation_message",
+      "page_object_name": "support"
+    }
+  ]
+}
