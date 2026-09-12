@@ -105,10 +105,12 @@
       "os"
     ],
     "locator_keys": [
-      "products",
       "dashboard_header",
       "orders",
       "cart",
+      "support_link",
+      "products",
+      "footer_section",
       "user_profile_name"
     ],
     "exposed_functions": [
@@ -154,6 +156,22 @@
         "input_parameters": [
           "expected_name"
         ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "scroll_to_footer",
+        "purpose": "Scrolls the page to the footer section and verifies its visibility in the viewport.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_support_link",
+        "purpose": "Clicks the support or contact us link in the footer to access help resources.",
+        "input_parameters": [],
         "output_parameters": [
           "Any"
         ]
@@ -350,6 +368,92 @@
         "signature": "submit_and_get_order_id",
         "purpose": "Submits the order, verifies the confirmation message, extracts and stores the generated order ID.",
         "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      }
+    ]
+  },
+  {
+    "file_path": "pageObjects/web/support_page.py",
+    "locator_keys": [
+      "confirmation_message",
+      "submit_button",
+      "support_form",
+      "message_textarea",
+      "subject_input_field"
+    ],
+    "exposed_functions": [
+      {
+        "signature": "load_locator",
+        "purpose": "Purpose not extracted by LLM.",
+        "input_parameters": [
+          "filename"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "navigate_to_support_portal",
+        "purpose": "Navigates to the support portal page and verifies that the support form is visible and ready for user interaction.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_subject",
+        "purpose": "Enters the subject text into the subject field of the support form.",
+        "input_parameters": [
+          "subject_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "input_message",
+        "purpose": "Enters the message text into the message textarea of the support form.",
+        "input_parameters": [
+          "message_text"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "click_submit_button",
+        "purpose": "Clicks the submit button to submit the support request form.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "locate_confirmation_message",
+        "purpose": "Locates and returns the confirmation message element after form submission.",
+        "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "wait_for_confirmation_message",
+        "purpose": "Waits for the confirmation message to become visible with a configurable timeout.",
+        "input_parameters": [
+          "timeout"
+        ],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_confirmation_message_displayed",
+        "purpose": "Verifies that the confirmation message is displayed and optionally validates its text content matches expected value.",
+        "input_parameters": [
+          "expected_message"
+        ],
         "output_parameters": [
           "Any"
         ]
