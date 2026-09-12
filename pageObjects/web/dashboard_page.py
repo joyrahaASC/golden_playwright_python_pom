@@ -30,3 +30,26 @@ class DashboardPage(CommonPage):
         self.page.locator(self.locators["cart"]).click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_load_state("domcontentloaded")
+
+    def verify_user_profile_name_visible(self, expected_name):
+        """Verify user profile name is visible in dashboard header.
+        
+        Waits for the dashboard header to load, locates the user profile name element,
+        verifies it is visible, and validates that the displayed name matches the expected name.
+        
+        Args:
+            expected_name (str): The expected user profile name to validate against.
+            
+        Returns:
+            bool: True if the user profile name is visible and matches the expected name.
+            
+        Raises:
+            AssertionError: If the user profile name is not visible or does not match expected_name.
+        """
+        self.page.locator(self.locators["dashboard_header"]).wait_for(state="visible")
+        user_profile_name_element = self.page.locator(self.locators["user_profile_name"])
+        user_profile_name_element.wait_for(state="visible")
+        expect(user_profile_name_element).to_be_visible()
+        actual_name = user_profile_name_element.inner_text()
+        assert actual_name == expected_name, f"Expected name '{expected_name}' but got '{actual_name}'"
+        return True
