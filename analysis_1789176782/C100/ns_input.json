@@ -32,5 +32,6 @@
       "mapped_function": "click_checkout",
       "page_object_name": "cartPage"
     }
-  ]
+  ],
+  "previous_feedback": "Missing assertion statement to validate the test. The script executes steps but lacks any explicit assertion to verify the state of the application (e.g., assert statement or Playwright expect)."
 }
