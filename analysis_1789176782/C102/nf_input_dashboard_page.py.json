@@ -1,0 +1,36 @@
+{
+  "python_file_path": "pageObjects/web/dashboard_page.py",
+  "missing_methods": [
+    {
+      "intent": "Scroll to Contact Us or Support link in footer",
+      "proposed_signature": "scroll_to_footer_support_link()",
+      "detailed_requirements": "Scroll down to the footer section of the dashboard page and ensure the Contact Us or Support link is visible in the viewport.",
+      "implementation_checklist": [
+        "Locate 'footer_support_link' element using self.page.locator(self.locators[\"footer_support_link\"])",
+        "Scroll the element into view using scroll_into_view_if_needed()",
+        "Wait for 'footer_support_link' to be visible using wait_for(state=\"visible\")",
+        "Verify 'footer_support_link' is in viewport using expect().to_be_visible()"
+      ],
+      "required_locator_keys": [
+        "footer_support_link"
+      ]
+    },
+    {
+      "intent": "Click Contact Us or Support link in footer",
+      "proposed_signature": "click_footer_support_link()",
+      "detailed_requirements": "Locate and click the Contact Us or Support link in the footer section of the dashboard page. This should navigate to the support portal.",
+      "implementation_checklist": [
+        "Locate 'footer_support_link' element using self.page.locator(self.locators[\"footer_support_link\"])",
+        "Wait for 'footer_support_link' to be visible using wait_for(state=\"visible\")",
+        "Verify 'footer_support_link' is visible using expect().to_be_visible()",
+        "Click 'footer_support_link' using click()",
+        "Wait for navigation to complete using self.page.wait_for_load_state(\"networkidle\")",
+        "Optionally wait for DOM content loaded using self.page.wait_for_load_state(\"domcontentloaded\")"
+      ],
+      "required_locator_keys": [
+        "footer_support_link"
+      ]
+    }
+  ],
+  "existing_python_content": "import json\nimport os\nfrom playwright.sync_api import expect\nfrom .common_page import CommonPage\n\ndef load_locator(filename):\n    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))\n    locator_path = os.path.join(base_dir, \"locators\", \"web\", filename)\n    with open(locator_path) as f:\n        return json.load(f)\n\nclass DashboardPage(CommonPage):\n    def __init__(self, page, scenario):\n        super().__init__(page, scenario)\n        self.locators = load_locator(\"dashboard_page.json\")\n\n    def search_product_add_cart(self, product_name):\n        product = self.page.locator(self.locators[\"products\"], has_text=product_name).first\n        product.wait_for(state=\"visible\")\n        add_cart_button = product.locator(\"button\", has_text=\" Add To Cart\")\n        expect(add_cart_button).to_be_visible()\n        if add_cart_button.is_visible():\n            add_cart_button.click()\n\n    def navigate_to_orders(self):\n        self.page.locator(self.locators[\"orders\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n\n    def navigate_to_cart(self):\n        self.page.locator(self.locators[\"cart\"]).click()\n        self.page.wait_for_load_state(\"networkidle\")\n        self.page.wait_for_load_state(\"domcontentloaded\")\n\n    def get_user_profile_name(self):\n        \"\"\"Get user profile name from dashboard header.\n        \n        Locates the user profile name element in the dashboard header,\n        waits for it to be visible, and returns its text value.\n        \n        Returns:\n            str: The displayed username or profile name text.\n        \"\"\"\n        user_profile_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_element.wait_for(state=\"visible\")\n        return user_profile_element.inner_text()\n\n    def verify_user_profile_name_visible(self, expected_name):\n        \"\"\"Assert user profile name is visible in dashboard header.\n        \n        Verifies that the user profile name element is visible in the dashboard\n        header and asserts that it matches the expected name.\n        \n        Args:\n            expected_name (str): The expected username or profile name to verify.\n        \n        Returns:\n            bool: True if all assertions pass.\n        \n        Raises:\n            AssertionError: If the element is not visible or the name doesn't match.\n        \"\"\"\n        user_profile_element = self.page.locator(self.locators[\"user_profile_name\"])\n        user_profile_element.wait_for(state=\"visible\")\n        expect(user_profile_element).to_be_visible()\n        actual_name = user_profile_element.inner_text()\n        assert actual_name == expected_name, f\"Expected profile name '{expected_name}', but got '{actual_name}'\"\n        return True\n"
+}
