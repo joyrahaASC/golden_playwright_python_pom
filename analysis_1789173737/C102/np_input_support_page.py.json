@@ -1,0 +1,101 @@
+{
+  "python_file_path": "pageObjects/web/support_page.py",
+  "missing_methods": [
+    {
+      "intent": "Navigate to Support Portal",
+      "proposed_signature": "navigate_to_support_portal()",
+      "detailed_requirements": "Navigate to the Support Portal page and wait for the page to load completely. Verify that the support form is visible.",
+      "implementation_checklist": [
+        "Navigate to support portal URL using driver navigation method",
+        "Wait for 'support_form' to be visible",
+        "Verify 'support_form' is displayed"
+      ],
+      "required_locator_keys": [
+        "support_form"
+      ]
+    },
+    {
+      "intent": "Input Subject text",
+      "proposed_signature": "input_subject(subject_text)",
+      "detailed_requirements": "Locate the Subject input field, wait for it to be visible and interactable, clear any existing text, and input the provided subject text.",
+      "implementation_checklist": [
+        "Wait for 'subject_input_field' to be visible",
+        "Wait for 'subject_input_field' to be interactable",
+        "Clear 'subject_input_field'",
+        "Input subject_text into 'subject_input_field'"
+      ],
+      "required_locator_keys": [
+        "subject_input_field"
+      ]
+    },
+    {
+      "intent": "Input Message text",
+      "proposed_signature": "input_message(message_text)",
+      "detailed_requirements": "Locate the Message input field or text area, wait for it to be visible and interactable, clear any existing text, and input the provided message text.",
+      "implementation_checklist": [
+        "Wait for 'message_textarea' to be visible",
+        "Wait for 'message_textarea' to be interactable",
+        "Clear 'message_textarea'",
+        "Input message_text into 'message_textarea'"
+      ],
+      "required_locator_keys": [
+        "message_textarea"
+      ]
+    },
+    {
+      "intent": "Click Submit button",
+      "proposed_signature": "click_submit_button()",
+      "detailed_requirements": "Locate the Submit button on the support form, wait for it to be clickable, and click it to submit the support request.",
+      "implementation_checklist": [
+        "Wait for 'submit_button' to be visible",
+        "Wait for 'submit_button' to be clickable",
+        "Click 'submit_button'"
+      ],
+      "required_locator_keys": [
+        "submit_button"
+      ]
+    },
+    {
+      "intent": "Locate confirmation message element",
+      "proposed_signature": "locate_confirmation_message()",
+      "detailed_requirements": "Locate and return the confirmation message element that appears after form submission. This method should return the WebElement for further validation.",
+      "implementation_checklist": [
+        "Wait for 'confirmation_message' to be present",
+        "Locate 'confirmation_message' element",
+        "Return 'confirmation_message' WebElement"
+      ],
+      "required_locator_keys": [
+        "confirmation_message"
+      ]
+    },
+    {
+      "intent": "Wait for confirmation message to be visible",
+      "proposed_signature": "wait_for_confirmation_message(timeout=10)",
+      "detailed_requirements": "Wait for the confirmation message element to become visible on the page with a configurable timeout (default 10 seconds). Use explicit wait conditions.",
+      "implementation_checklist": [
+        "Wait for 'confirmation_message' to be visible with timeout parameter",
+        "Verify 'confirmation_message' visibility state"
+      ],
+      "required_locator_keys": [
+        "confirmation_message"
+      ]
+    },
+    {
+      "intent": "Assert confirmation message is displayed",
+      "proposed_signature": "verify_confirmation_message_displayed(expected_message=None)",
+      "detailed_requirements": "Verify that the confirmation message is displayed on the page. Optionally validate that the message text matches the expected confirmation message if provided. Return True if displayed and matches (if expected_message provided), otherwise raise an assertion error.",
+      "implementation_checklist": [
+        "Wait for 'confirmation_message' to be visible",
+        "Verify 'confirmation_message' is displayed",
+        "Get text from 'confirmation_message'",
+        "If expected_message is provided, assert retrieved text matches expected_message",
+        "Return True if all assertions pass"
+      ],
+      "required_locator_keys": [
+        "confirmation_message"
+      ]
+    }
+  ],
+  "class_name": "SupportPage",
+  "flow_name": "support_page"
+}
