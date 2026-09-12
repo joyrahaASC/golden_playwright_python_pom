@@ -28,5 +28,10 @@
     "file_name": "tests/web/scripts/test_suite_01_scripts.py",
     "class_name": "",
     "function_name": "test_suite_01_scripts"
+  },
+  "C102": {
+    "file_name": "tests/web/scripts/test_suite_01_scripts.py",
+    "class_name": "",
+    "function_name": "test_submit_support_request"
   }
 }
