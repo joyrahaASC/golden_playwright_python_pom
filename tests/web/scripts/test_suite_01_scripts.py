@@ -22,7 +22,11 @@ def test_suite_01_scripts(page, request):
     
     loginPage.go_to()
     loginPage.valid_login(test_data["username"], test_data["password"])
-    
+
     dashboardPage.verify_user_profile_name_visible()
     dashboardPage.search_product_add_cart("Zara Coat 3")
     dashboardPage.navigate_to_cart()
+    
+    # Assert cart page is loaded
+    cart_header = page.locator("h1:has-text('My Cart')")
+    assert cart_header.is_visible(), "Cart page should be loaded successfully"
