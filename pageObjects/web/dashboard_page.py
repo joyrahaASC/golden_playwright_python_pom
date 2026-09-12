@@ -30,30 +30,3 @@ class DashboardPage(CommonPage):
         self.page.locator(self.locators["cart"]).click()
         self.page.wait_for_load_state("networkidle")
         self.page.wait_for_load_state("domcontentloaded")
-
-    def get_dashboard_header_profile_name(self):
-        """Locate and return the profile name element displayed in the dashboard header.
-        
-        This method waits for the profile name element to be present in the DOM and visible,
-        then returns the WebElement object for further assertions or text extraction.
-        
-        Returns:
-            Locator: The located dashboard header profile name element object.
-        """
-        profile_name_element = self.page.locator(self.locators["dashboard_header_profile_name"])
-        profile_name_element.wait_for(state="visible")
-        return profile_name_element
-
-    def verify_dashboard_header_profile_name_visible(self):
-        """Verify that the dashboard header profile name element is visible on the page.
-        
-        This method locates the profile name element, waits for it to be visible,
-        asserts its visibility state, and returns the visibility status.
-        
-        Returns:
-            bool: True if the profile name element is visible, False otherwise.
-        """
-        profile_name_element = self.page.locator(self.locators["dashboard_header_profile_name"])
-        profile_name_element.wait_for(state="visible")
-        expect(profile_name_element).to_be_visible()
-        return profile_name_element.is_visible()
