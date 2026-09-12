@@ -16,7 +16,8 @@
       "productsText": ".card-body b",
       "cart": "[routerlink*='cart']",
       "orders": "button[routerlink*='myorders']",
-      "user_profile_name": "TBD_user_profile_name"
+      "user_profile_name": "TBD_user_profile_name",
+      "footer_support_link": "TBD_footer_support_link"
     }
   },
   {
@@ -44,6 +45,16 @@
       "submit": ".action__submit",
       "orderConfirmationText": ".hero-primary",
       "orderId": ".em-spacer-1 .ng-star-inserted"
+    }
+  },
+  {
+    "file_path": "locators/web/support_page.json",
+    "locators": {
+      "support_portal_header": "TBD_support_portal_header",
+      "subject_input_field": "TBD_subject_input_field",
+      "message_textarea": "TBD_message_textarea",
+      "submit_button": "TBD_submit_button",
+      "confirmation_message": "TBD_confirmation_message"
     }
   }
 ]
