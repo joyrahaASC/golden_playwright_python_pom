@@ -53,3 +53,34 @@ class DashboardPage(CommonPage):
         actual_name = user_profile_name_element.inner_text()
         assert actual_name == expected_name, f"Expected name '{expected_name}' but got '{actual_name}'"
         return True
+
+    def scroll_to_footer(self):
+        """Scroll the page to the footer section.
+        
+        Waits for the footer section to be present in the DOM, scrolls it into view,
+        and verifies that it is visible and in the viewport.
+        
+        Returns:
+            None
+        """
+        footer_element = self.page.locator(self.locators["footer_section"])
+        footer_element.wait_for(state="attached")
+        footer_element.scroll_into_view_if_needed()
+        footer_element.wait_for(state="visible")
+        expect(footer_element).to_be_in_viewport()
+
+    def click_support_link(self):
+        """Click the Contact Us or Support link in the footer section.
+        
+        Waits for the support link to be visible and enabled, clicks it,
+        and waits for the page to complete loading.
+        
+        Returns:
+            None
+        """
+        support_link_element = self.page.locator(self.locators["support_link"])
+        support_link_element.wait_for(state="visible")
+        expect(support_link_element).to_be_enabled()
+        support_link_element.click()
+        self.page.wait_for_load_state("networkidle")
+        self.page.wait_for_load_state("domcontentloaded")
