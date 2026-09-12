@@ -1,0 +1,286 @@
+{
+  "aava_config": {
+    "aava_username": "joy.raha@ascendion.com",
+    "repo_owner": "joyrahaASC",
+    "repo_name": "golden_playwright_python_pom",
+    "branch": "test8",
+    "intent_path": "pageObjects/web",
+    "platform": "web",
+    "analysis_path": "analysis_1789173737/C102",
+    "test_script_path": "tests/web/scripts/test_suite_01_scripts.py",
+    "requires_flow_container": false,
+    "language": "python",
+    "framework": "playwright",
+    "traceability_map_path": "traceability_map.json",
+    "topology": {
+      "shadow_branch_name": "shadow_repo_topology_1789148514",
+      "global_context": {
+        "aava_username": "joy.raha@ascendion.com",
+        "repo_owner": "joyrahaASC",
+        "repo_name": "golden_playwright_python_pom",
+        "working_branch": "test8"
+      },
+      "platforms": {
+        "web": {
+          "page_class_metadata_path": "Repo Topology/web/web_page_class_metadata.json",
+          "locators_metadata_path": "Repo Topology/web/web_locators_metadata.json",
+          "page_class_path": "pageObjects/web",
+          "locators_path": "locators/web",
+          "test_cases_steps_scripts_map_path": "Repo Topology/web/web_test_cases_steps_scripts_map.json",
+          "script_path": "tests/web"
+        },
+        "windows": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "android": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "ios": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        },
+        "mac": {
+          "page_class_metadata_path": "",
+          "locators_metadata_path": "",
+          "page_class_path": "",
+          "locators_path": "",
+          "test_cases_steps_scripts_map_path": ""
+        }
+      }
+    }
+  },
+  "test_case_id": "C102",
+  "tiers": {
+    "Tier_1_Locators": [
+      {
+        "ui_map_file": "dashboard_page.json",
+        "page_class_file": "dashboard_page.py",
+        "missing_locators": [
+          "footer_section",
+          "support_link"
+        ]
+      },
+      {
+        "ui_map_file": "support_page.json",
+        "page_class_file": "support_page.py",
+        "missing_locators": [
+          "support_form",
+          "subject_input_field",
+          "message_textarea",
+          "submit_button",
+          "confirmation_message"
+        ]
+      }
+    ],
+    "Tier_2_Indep_Pages": [
+      {
+        "file": "dashboard_page.py",
+        "class_name": "DashboardPage",
+        "situation": "Situation-2",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Scroll to footer",
+            "proposed_signature": "scroll_to_footer()",
+            "detailed_requirements": "Scroll the page to the footer section to make footer elements visible and interactable.",
+            "implementation_checklist": [
+              "Wait for 'footer_section' to be present in DOM",
+              "Scroll 'footer_section' into view using scroll_into_view_if_needed or evaluate JavaScript",
+              "Wait for 'footer_section' to be visible",
+              "Verify 'footer_section' is in viewport"
+            ],
+            "required_locator_keys": [
+              "footer_section"
+            ]
+          },
+          {
+            "intent": "Click the Contact Us or Support link",
+            "proposed_signature": "click_support_link()",
+            "detailed_requirements": "Locate and click the Contact Us or Support link in the footer section. Wait for the element to be clickable before clicking.",
+            "implementation_checklist": [
+              "Wait for 'support_link' to be visible",
+              "Wait for 'support_link' to be enabled/clickable",
+              "Click 'support_link'",
+              "Wait for page load state to be networkidle",
+              "Wait for page load state to be domcontentloaded"
+            ],
+            "required_locator_keys": [
+              "support_link"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/dashboard_page.py",
+        "locator_gaps": {
+          "ui_map_file": "dashboard_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "footer_section",
+            "support_link"
+          ]
+        }
+      },
+      {
+        "file": "support_page.py",
+        "class_name": "SupportPage",
+        "situation": "Situation-3",
+        "resolved_intents": [],
+        "missing_methods": [
+          {
+            "intent": "Navigate to Support Portal",
+            "proposed_signature": "navigate_to_support_portal()",
+            "detailed_requirements": "Navigate to the Support Portal page and wait for the page to load completely. Verify that the support form is visible.",
+            "implementation_checklist": [
+              "Navigate to support portal URL using driver navigation method",
+              "Wait for 'support_form' to be visible",
+              "Verify 'support_form' is displayed"
+            ],
+            "required_locator_keys": [
+              "support_form"
+            ]
+          },
+          {
+            "intent": "Input Subject text",
+            "proposed_signature": "input_subject(subject_text)",
+            "detailed_requirements": "Locate the Subject input field, wait for it to be visible and interactable, clear any existing text, and input the provided subject text.",
+            "implementation_checklist": [
+              "Wait for 'subject_input_field' to be visible",
+              "Wait for 'subject_input_field' to be interactable",
+              "Clear 'subject_input_field'",
+              "Input subject_text into 'subject_input_field'"
+            ],
+            "required_locator_keys": [
+              "subject_input_field"
+            ]
+          },
+          {
+            "intent": "Input Message text",
+            "proposed_signature": "input_message(message_text)",
+            "detailed_requirements": "Locate the Message input field or text area, wait for it to be visible and interactable, clear any existing text, and input the provided message text.",
+            "implementation_checklist": [
+              "Wait for 'message_textarea' to be visible",
+              "Wait for 'message_textarea' to be interactable",
+              "Clear 'message_textarea'",
+              "Input message_text into 'message_textarea'"
+            ],
+            "required_locator_keys": [
+              "message_textarea"
+            ]
+          },
+          {
+            "intent": "Click Submit button",
+            "proposed_signature": "click_submit_button()",
+            "detailed_requirements": "Locate the Submit button on the support form, wait for it to be clickable, and click it to submit the support request.",
+            "implementation_checklist": [
+              "Wait for 'submit_button' to be visible",
+              "Wait for 'submit_button' to be clickable",
+              "Click 'submit_button'"
+            ],
+            "required_locator_keys": [
+              "submit_button"
+            ]
+          },
+          {
+            "intent": "Locate confirmation message element",
+            "proposed_signature": "locate_confirmation_message()",
+            "detailed_requirements": "Locate and return the confirmation message element that appears after form submission. This method should return the WebElement for further validation.",
+            "implementation_checklist": [
+              "Wait for 'confirmation_message' to be present",
+              "Locate 'confirmation_message' element",
+              "Return 'confirmation_message' WebElement"
+            ],
+            "required_locator_keys": [
+              "confirmation_message"
+            ]
+          },
+          {
+            "intent": "Wait for confirmation message to be visible",
+            "proposed_signature": "wait_for_confirmation_message(timeout=10)",
+            "detailed_requirements": "Wait for the confirmation message element to become visible on the page with a configurable timeout (default 10 seconds). Use explicit wait conditions.",
+            "implementation_checklist": [
+              "Wait for 'confirmation_message' to be visible with timeout parameter",
+              "Verify 'confirmation_message' visibility state"
+            ],
+            "required_locator_keys": [
+              "confirmation_message"
+            ]
+          },
+          {
+            "intent": "Assert confirmation message is displayed",
+            "proposed_signature": "verify_confirmation_message_displayed(expected_message=None)",
+            "detailed_requirements": "Verify that the confirmation message is displayed on the page. Optionally validate that the message text matches the expected confirmation message if provided. Return True if displayed and matches (if expected_message provided), otherwise raise an assertion error.",
+            "implementation_checklist": [
+              "Wait for 'confirmation_message' to be visible",
+              "Verify 'confirmation_message' is displayed",
+              "Get text from 'confirmation_message'",
+              "If expected_message is provided, assert retrieved text matches expected_message",
+              "Return True if all assertions pass"
+            ],
+            "required_locator_keys": [
+              "confirmation_message"
+            ]
+          }
+        ],
+        "path": "pageObjects/web/support_page.py",
+        "locator_gaps": {
+          "ui_map_file": "support_page.json",
+          "present_locators": [],
+          "missing_locators": [
+            "support_form",
+            "subject_input_field",
+            "message_textarea",
+            "submit_button",
+            "confirmation_message"
+          ]
+        }
+      }
+    ],
+    "Tier_3_Dep_Pages": [],
+    "Tier_99_Ref": [
+      {
+        "file": "login_page.py",
+        "class_name": "LoginPage",
+        "situation": "Situation-1",
+        "resolved_intents": [
+          {
+            "intent": "Load test data from JSON file",
+            "mapped_function": "load_test_data"
+          },
+          {
+            "intent": "Navigate to the application",
+            "mapped_function": "go_to"
+          },
+          {
+            "intent": "Perform valid login with username and password",
+            "mapped_function": "valid_login"
+          }
+        ],
+        "missing_methods": [],
+        "path": "pageObjects/web/login_page.py"
+      },
+      {
+        "file": "common_scenario.py",
+        "class_name": "CommonScenario",
+        "situation": "Situation-1",
+        "resolved_intents": [
+          {
+            "intent": "Initialize common scenario object",
+            "mapped_function": "hooks"
+          }
+        ],
+        "missing_methods": [],
+        "path": "pageObjects/web/common_scenario.py"
+      }
+    ]
+  }
+}
