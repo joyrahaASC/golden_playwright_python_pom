@@ -65,3 +65,27 @@ class DashboardPage(CommonPage):
         actual_name = user_profile_element.inner_text()
         assert actual_name == expected_name, f"Expected profile name '{expected_name}', but got '{actual_name}'"
         return True
+
+    def scroll_to_footer_support_link(self):
+        """Scroll to Contact Us or Support link in footer.
+        
+        Scrolls down to the footer section of the dashboard page and ensures
+        the Contact Us or Support link is visible in the viewport.
+        """
+        footer_support_link_element = self.page.locator(self.locators["footer_support_link"])
+        footer_support_link_element.scroll_into_view_if_needed()
+        footer_support_link_element.wait_for(state="visible")
+        expect(footer_support_link_element).to_be_visible()
+
+    def click_footer_support_link(self):
+        """Click Contact Us or Support link in footer.
+        
+        Locates and clicks the Contact Us or Support link in the footer section
+        of the dashboard page. This should navigate to the support portal.
+        """
+        footer_support_link_element = self.page.locator(self.locators["footer_support_link"])
+        footer_support_link_element.wait_for(state="visible")
+        expect(footer_support_link_element).to_be_visible()
+        footer_support_link_element.click()
+        self.page.wait_for_load_state("networkidle")
+        self.page.wait_for_load_state("domcontentloaded")
