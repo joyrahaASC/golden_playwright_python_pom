@@ -39,5 +39,6 @@
       "mapped_function": "navigate_to_cart",
       "page_object_name": "dashboardPage"
     }
-  ]
+  ],
+  "previous_feedback": "Missing assertions: The script executes steps but lacks assertion statements to validate the test outcome. Reference scripts include assertions using 'assert' statements or Playwright 'expect' to verify application state."
 }
