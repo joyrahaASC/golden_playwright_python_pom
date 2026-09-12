@@ -1,0 +1,81 @@
+{
+  "test_case_id": "C101",
+  "files": [
+    {
+      "file": "login_page.py",
+      "class_name": "LoginPage",
+      "situation": "Situation-1",
+      "resolved_intents": [
+        {
+          "intent": "Navigate to the application",
+          "mapped_function": "go_to"
+        },
+        {
+          "intent": "Load test data from JSON file",
+          "mapped_function": "load_test_data"
+        },
+        {
+          "intent": "Perform valid login with username and password",
+          "mapped_function": "valid_login"
+        }
+      ],
+      "missing_methods": [],
+      "path": "pageObjects/web/login_page.py"
+    },
+    {
+      "file": "dashboard_page.py",
+      "class_name": "DashboardPage",
+      "situation": "Situation-2",
+      "resolved_intents": [
+        {
+          "intent": "Search for product and add to cart",
+          "mapped_function": "search_product_add_cart"
+        },
+        {
+          "intent": "Navigate to the cart page",
+          "mapped_function": "navigate_to_cart"
+        }
+      ],
+      "missing_methods": [
+        {
+          "intent": "Get user profile name from dashboard header",
+          "proposed_signature": "get_user_profile_name()",
+          "detailed_requirements": "Locate the user profile name element in the dashboard header and return its text value. This method should wait for the element to be visible and extract the displayed username or profile name.",
+          "implementation_checklist": [
+            "Wait for 'user_profile_name' element to be visible using wait_for(state='visible')",
+            "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+            "Get text content from 'user_profile_name' element using text_content() or inner_text()",
+            "Return the extracted text value"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        },
+        {
+          "intent": "Assert user profile name is visible in dashboard header",
+          "proposed_signature": "verify_user_profile_name_visible(expected_name)",
+          "detailed_requirements": "Verify that the user profile name element is visible in the dashboard header and optionally assert that it matches the expected name. This method should wait for the element to be visible and return a boolean or raise an assertion error if not visible or if the name doesn't match.",
+          "implementation_checklist": [
+            "Locate 'user_profile_name' element using self.page.locator(self.locators['user_profile_name'])",
+            "Wait for 'user_profile_name' element to be visible using wait_for(state='visible')",
+            "Assert 'user_profile_name' element is visible using expect(element).to_be_visible()",
+            "Get text content from 'user_profile_name' element using text_content() or inner_text()",
+            "Assert the retrieved text matches expected_name parameter",
+            "Return boolean True if all assertions pass or raise assertion error if not"
+          ],
+          "required_locator_keys": [
+            "user_profile_name"
+          ]
+        }
+      ],
+      "path": "pageObjects/web/dashboard_page.py",
+      "locator_gaps": {
+        "ui_map_file": "dashboard_page.json",
+        "present_locators": [],
+        "missing_locators": [
+          "user_profile_name"
+        ]
+      }
+    }
+  ]
+}
