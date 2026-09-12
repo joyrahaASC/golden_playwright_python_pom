@@ -105,9 +105,11 @@
       "os"
     ],
     "locator_keys": [
-      "cart",
       "products",
-      "orders"
+      "dashboard_header",
+      "orders",
+      "cart",
+      "user_profile_name"
     ],
     "exposed_functions": [
       {
@@ -142,6 +144,16 @@
         "signature": "navigate_to_cart",
         "purpose": "Navigates the user to the shopping cart page to review items and proceed to checkout.",
         "input_parameters": [],
+        "output_parameters": [
+          "Any"
+        ]
+      },
+      {
+        "signature": "verify_user_profile_name_visible",
+        "purpose": "Verifies that the user profile name is visible in the dashboard header and matches the expected name value.",
+        "input_parameters": [
+          "expected_name"
+        ],
         "output_parameters": [
           "Any"
         ]
