@@ -4,5 +4,7 @@
     "cart": "[routerlink*='cart']",
     "orders": "button[routerlink*='myorders']",
     "dashboard_header": "TBD_dashboard_header",
-    "user_profile_name": "TBD_user_profile_name"
+    "user_profile_name": "TBD_user_profile_name",
+    "footer_section": "TBD_footer_section",
+    "support_link": "TBD_support_link"
 }
