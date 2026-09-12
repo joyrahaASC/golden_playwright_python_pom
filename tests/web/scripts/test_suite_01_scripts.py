@@ -1,6 +1,7 @@
 import pytest
 import json
 import os
+from playwright.sync_api import expect
 
 from pageObjects.web.login_page import LoginPage
 from pageObjects.web.dashboard_page import DashboardPage
@@ -17,7 +18,6 @@ def test_suite_01_scripts(page, request):
     test_data = load_test_data()
     scenario = CommonScenario(page, request)
     
-    # Initialize Page Objects directly in the test
     loginPage = LoginPage(page, scenario)
     dashboardPage = DashboardPage(page, scenario)
     cartPage = CartPage(page, scenario)
@@ -30,3 +30,8 @@ def test_suite_01_scripts(page, request):
 
     cartPage.verify_product_is_displayed("Zara Coat 3")
     cartPage.click_checkout()
+    
+    # Assert checkout page is loaded
+    checkout_header = page.locator("text=Payment Method")
+    checkout_header.wait_for(state="visible")
+    assert checkout_header.is_visible(), "Checkout page should be displayed after clicking checkout button"
