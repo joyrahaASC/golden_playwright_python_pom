@@ -1,0 +1,80 @@
+{
+  "test_script_path": "tests/web/scripts/test_suite_01_scripts.py",
+  "top_5_reference_file": "analysis_1789173737/C102/ns_top_5_matcher_scripts.json",
+  "chronological_steps": [
+    {
+      "intent": "Load test data from JSON file",
+      "mapped_function": "load_test_data",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Initialize common scenario object",
+      "mapped_function": "hooks",
+      "page_object_name": "commonScenario"
+    },
+    {
+      "intent": "Navigate to the application",
+      "mapped_function": "go_to",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Perform valid login with username and password",
+      "mapped_function": "valid_login",
+      "page_object_name": "loginPage"
+    },
+    {
+      "intent": "Scroll to footer",
+      "label": "",
+      "mapped_function": "scroll_to_footer",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Click the Contact Us or Support link",
+      "label": "",
+      "mapped_function": "click_support_link",
+      "page_object_name": "dashboardPage"
+    },
+    {
+      "intent": "Navigate to Support Portal",
+      "label": "",
+      "mapped_function": "navigate_to_support_portal",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Input Subject text",
+      "label": "",
+      "mapped_function": "input_subject",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Input Message text",
+      "label": "",
+      "mapped_function": "input_message",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Click Submit button",
+      "label": "",
+      "mapped_function": "click_submit_button",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Locate confirmation message element",
+      "label": "",
+      "mapped_function": "locate_confirmation_message",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Wait for confirmation message to be visible",
+      "label": "",
+      "mapped_function": "wait_for_confirmation_message",
+      "page_object_name": "supportPage"
+    },
+    {
+      "intent": "Assert confirmation message is displayed",
+      "label": "",
+      "mapped_function": "verify_confirmation_message_displayed",
+      "page_object_name": "supportPage"
+    }
+  ]
+}
